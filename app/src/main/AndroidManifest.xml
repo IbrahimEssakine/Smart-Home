@@ -12,6 +12,9 @@
         android:theme="@style/Theme.SmartHome"
         tools:targetApi="31">
         <activity
+            android:name=".HelloTherePage"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
