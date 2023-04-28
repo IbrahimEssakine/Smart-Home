@@ -13,4 +13,9 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_buttom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_buttom</item>
+    </style>
 </resources>
