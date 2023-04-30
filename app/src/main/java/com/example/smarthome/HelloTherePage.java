@@ -3,6 +3,7 @@ package com.example.smarthome;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -22,6 +23,7 @@ public class HelloTherePage extends AppCompatActivity {
 
 
     Button loginbutton ;
+    Button signupbutton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -35,6 +37,22 @@ public class HelloTherePage extends AppCompatActivity {
         GifImageView gif = (GifImageView)findViewById(R.id.LogoGif);
         ((GifDrawable)gif.getDrawable()).stop();
 
+        // SignUp translate page section
+
+        signupbutton = findViewById(R.id.button_signup);
+        signupbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(HelloTherePage.this,SignUpPage.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.silde_in_right,R.anim.slide_out_left);
+            }
+
+        });
+
+
+
+        // buttom sheet section
         loginbutton = findViewById(R.id.button_login);
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +69,7 @@ public class HelloTherePage extends AppCompatActivity {
                 Continuewithfirebase.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(HelloTherePage.this, "Redirecting You To Firebase Account", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HelloTherePage.this, "Redirecting Your To Firebase Account", Toast.LENGTH_SHORT).show();
                     }
                 });
 

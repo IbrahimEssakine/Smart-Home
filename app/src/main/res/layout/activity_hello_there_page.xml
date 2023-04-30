@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/main_illustration"
+            android:id="@+id/login_illustration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleX="1.5"
@@ -48,6 +48,7 @@
         android:id="@+id/Hellotext"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/outfit_bold"
         android:letterSpacing="0"
         android:text="Hello , There !"

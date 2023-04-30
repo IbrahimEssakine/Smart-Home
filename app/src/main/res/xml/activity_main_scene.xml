@@ -36,7 +36,8 @@
             motion:layout_constraintStart_toStartOf="parent"
             android:scaleX="10"
             motion:transitionEasing="standard"
-            android:scaleY="10" />
+            android:scaleY="10"
+            android:visibility="visible" />
         <Constraint
             android:id="@+id/whiteSHL"
             motion:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +46,8 @@
             motion:transitionEasing="cubic(0.8,0,0.2,1)"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintStart_toStartOf="parent" />
+            motion:layout_constraintStart_toStartOf="parent"
+            android:visibility="visible" />
         <Constraint
             android:id="@+id/loadingif"
             motion:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +81,8 @@
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             android:scaleX="0"
-            android:scaleY="0" />
+            android:scaleY="0"
+            motion:transitionEasing="linear" />
         <Constraint
             android:id="@+id/whiteSHL"
             motion:layout_constraintEnd_toEndOf="parent"
