@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
+    android:background="@drawable/buttomsheet_background"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    android:id="@+id/login_buttomsheet"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+
+    <TextView
+        android:id="@+id/Welcomebacktext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="22dp"
+        android:fontFamily="@font/outfit_bold"
+        android:letterSpacing="0"
+        android:text="Welcome Back !"
+        android:textColor="#1C4984"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttoncontinue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttoncontinue"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/continuewith_background"
+        android:drawableLeft="@drawable/firebase_icon"
+        android:fontFamily="@font/outfit_medium"
+        android:letterSpacing="0"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:text="Continue with Firebase"
+        android:textAllCaps="false"
+        android:textColor="#000"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Welcomebacktext" />
+
+    <ImageView
+        android:id="@+id/dash"
+        android:layout_width="66dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/popup_dash" />
+
+    <ImageView
+        android:id="@+id/logosmarthousename"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttoncontinue"
+        app:srcCompat="@drawable/smarthousestaticname" />
+</androidx.constraintlayout.widget.ConstraintLayout>

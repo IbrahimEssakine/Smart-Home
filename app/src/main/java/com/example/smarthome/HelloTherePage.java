@@ -96,7 +96,7 @@ public class HelloTherePage extends AppCompatActivity {
                     Continuewithfirebase.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Toast.makeText(HelloTherePage.this, "Redirecting Your To Firebase Account", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HelloTherePage.this, "Redirecting To Your Firebase Account", Toast.LENGTH_SHORT).show();
                         }
                     });
                 } else {
