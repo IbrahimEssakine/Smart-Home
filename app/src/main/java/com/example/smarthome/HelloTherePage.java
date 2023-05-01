@@ -1,27 +1,30 @@
 package com.example.smarthome;
 
+import static java.lang.Math.abs;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.transition.ChangeBounds;
-import android.view.Gravity;
+import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowInsets;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
+import eightbitlab.com.blurview.BlurAlgorithm;
+import eightbitlab.com.blurview.BlurView;
+import eightbitlab.com.blurview.RenderEffectBlur;
+import eightbitlab.com.blurview.RenderScriptBlur;
 import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
 
@@ -31,6 +34,7 @@ public class HelloTherePage extends AppCompatActivity {
     Button loginbutton ;
     Button signupbutton;
     BottomSheetBehavior bottomSheetBehavior;
+    BlurView blurview ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -49,6 +53,10 @@ public class HelloTherePage extends AppCompatActivity {
         ConstraintLayout bottomSheetLayout = findViewById(R.id.login_buttomsheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
 
+
+        blurview = findViewById(R.id.blurbg);
+
+
         bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
@@ -57,7 +65,15 @@ public class HelloTherePage extends AppCompatActivity {
 
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-
+                float radius = (float) (2*(slideOffset+0.001));
+                Log.d("mo3mo3slidoffsetradius", String.valueOf(radius));
+                if (slideOffset>0)
+                {
+                    blurview.setupWith(getWindow().getDecorView().findViewById(android.R.id.content)).setBlurEnabled(true);
+                    blurview.setupWith(getWindow().getDecorView().findViewById(android.R.id.content)).setBlurRadius(radius);
+                }else {
+                    blurview.setupWith(getWindow().getDecorView().findViewById(android.R.id.content)).setBlurEnabled(false);
+                }
             }
 
 
@@ -76,6 +92,7 @@ public class HelloTherePage extends AppCompatActivity {
         signupbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                blurview.setBlurRadius(25f);
                 Intent intent=new Intent(HelloTherePage.this,SignUpPage.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.silde_in_right,R.anim.slide_out_left);
@@ -99,8 +116,6 @@ public class HelloTherePage extends AppCompatActivity {
                             Toast.makeText(HelloTherePage.this, "Redirecting To Your Firebase Account", Toast.LENGTH_SHORT).show();
                         }
                     });
-                } else {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 }
             }
 
@@ -111,4 +126,6 @@ public class HelloTherePage extends AppCompatActivity {
 
 
     }
+
+
 }

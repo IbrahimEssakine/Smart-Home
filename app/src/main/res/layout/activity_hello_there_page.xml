@@ -115,6 +115,20 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <include layout="@layout/login_buttomsheet" />
+    <eightbitlab.com.blurview.BlurView
+        android:id="@+id/blurbg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="461dp">
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/login_buttomsheet" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </eightbitlab.com.blurview.BlurView>
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
