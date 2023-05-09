@@ -92,8 +92,9 @@
             <Button
                 android:id="@+id/buttoncreatfirebaseacc"
                 android:layout_width="300dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp"
                 android:background="@drawable/continuewith_background"
                 android:backgroundTint="#1C4984"
                 android:drawableLeft="@drawable/firebase_icon"
