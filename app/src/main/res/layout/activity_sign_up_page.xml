@@ -1,42 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FCFCFC"
-    tools:context=".SignUpPage">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/backgroundLayout"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/bg"
-        android:backgroundTint="#F5F5F5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/signup_illustration"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/signup_illustration" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FCFCFC"
+        tools:context=".SignUpPage">
 
     <Button
         android:id="@+id/buttonback"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
 
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp"
         android:background="@drawable/back_arrow_background"
 
         android:drawableEnd="@drawable/baseline_arrow_back_ios_24"
@@ -44,66 +23,105 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/Hellotext"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/outfit_bold"
-        android:letterSpacing="0"
-        android:text="Create Your Account"
-        android:textColor="#1C4984"
-        android:textSize="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backgroundLayout" />
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="54dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/Welcometext"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="30dp"
-        android:fontFamily="@font/outfit_semibold"
-        android:letterSpacing="0"
-        android:lineSpacingMultiplier="1.4"
-        android:text="Assuming that you have a google account, you need to press the button below so you will create a Firebase account "
-        android:textAlignment="textStart"
-        android:textColor="#707070"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Hellotext" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/buttoncreatfirebaseacc"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/continuewith_background"
-        android:backgroundTint="#1C4984"
-        android:drawableLeft="@drawable/firebase_icon"
-        android:fontFamily="@font/outfit_medium"
-        android:letterSpacing="0"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        android:text="Creat a Firebase Account"
-        android:textAllCaps="false"
-        android:textColor="#fff"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Welcometext" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/backgroundLayout"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:background="@drawable/bg"
+                android:backgroundTint="#F5F5F5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/logosmarthousename"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/smarthousestaticname" />
+                <ImageView
+                    android:id="@+id/signup_illustration"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/signup_illustration" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/Hellotext"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/outfit_bold"
+                android:letterSpacing="0"
+                android:text="Create Your Account"
+                android:textColor="#1C4984"
+                android:textSize="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/backgroundLayout" />
+
+            <TextView
+                android:id="@+id/Welcometext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/outfit_semibold"
+                android:letterSpacing="0"
+                android:lineSpacingMultiplier="1.4"
+                android:text="Assuming that you have a google account, you need to press the button below so you will create a Firebase account "
+                android:textAlignment="textStart"
+                android:textColor="#707070"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Hellotext" />
+
+            <Button
+                android:id="@+id/buttoncreatfirebaseacc"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/continuewith_background"
+                android:backgroundTint="#1C4984"
+                android:drawableLeft="@drawable/firebase_icon"
+                android:fontFamily="@font/outfit_medium"
+                android:letterSpacing="0"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:text="Creat a Firebase Account"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/logosmarthousename"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Welcometext" />
+
+            <ImageView
+                android:id="@+id/logosmarthousename"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/smarthousestaticname" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

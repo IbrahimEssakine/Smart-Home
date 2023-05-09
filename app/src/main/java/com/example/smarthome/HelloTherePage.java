@@ -65,7 +65,7 @@ public class HelloTherePage extends AppCompatActivity {
 
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-                float radius = (float) (2*(slideOffset+0.001));
+                float radius = (float) (2*slideOffset);
                 Log.d("mo3mo3slidoffsetradius", String.valueOf(radius));
                 if (slideOffset>0)
                 {
