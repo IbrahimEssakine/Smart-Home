@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FEFEFE">
@@ -121,13 +120,19 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
     </ScrollView>
 
     <eightbitlab.com.blurview.BlurView
         android:id="@+id/blurbg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="461dp">
+        android:paddingTop="461dp"
+        >
+
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -136,7 +141,5 @@
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     </eightbitlab.com.blurview.BlurView>
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
