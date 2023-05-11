@@ -104,7 +104,7 @@ import java.util.ArrayList;
                 }
 
             } catch (ApiException e) {
-                Toast.makeText( this, "hada errir", Toast.LENGTH_SHORT).show();
+                Toast.makeText( this, "Cnx Error", Toast.LENGTH_SHORT).show();
             }
         }
     }
