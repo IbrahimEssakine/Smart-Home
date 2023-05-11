@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FCFCFC"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".CreateHousePage"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FCFCFC"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/buttonback"
+                android:layout_width="32dp"
+                android:layout_height="30dp"
+
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/back_arrow_background"
+
+                android:drawableEnd="@drawable/baseline_arrow_back_ios_24"
+                android:text=""
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/House"
+                android:layout_width="285dp"
+                android:layout_height="51dp"
+                android:layout_marginLeft="70dp"
+                android:fontFamily="@font/outfit_bold"
+                android:gravity="center"
+                android:letterSpacing="0"
+                android:text="Create House"
+                android:textColor="#1C4984"
+                android:textSize="34dp"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="75dp" />
+
+            <TextView
+                android:id="@+id/name11"
+                android:layout_width="242dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/outfit_bold"
+                android:letterSpacing="0"
+                android:text="House Name"
+                android:textColor="#1C4984"
+                android:textSize="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="153dp" />
+
+
+            <EditText
+                android:id="@+id/HouseTxt"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/outfit_bold"
+                android:hint="House Name"
+                android:letterSpacing="0"
+                android:textColor="#1C4984"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="221dp" />
+
+            <TextView
+                android:id="@+id/name9"
+                android:layout_width="183dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/outfit_bold"
+                android:letterSpacing="0"
+                android:text="Password"
+                android:textColor="#1C4984"
+                android:textSize="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="286dp" />
+
+            <EditText
+                android:id="@+id/KeypadPassword"
+                android:layout_width="154dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/outfit_bold"
+                android:hint="Password"
+                android:letterSpacing="0"
+                android:textColor="#1C4984"
+                android:textSize="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_editor_absoluteY="350dp" />
+
+            <TextView
+                android:id="@+id/ID_card"
+                android:layout_width="212dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/outfit_bold"
+                android:letterSpacing="0"
+                android:text="ID Card Code"
+                android:textColor="#1C4984"
+                android:textSize="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="411dp" />
+
+            <EditText
+                android:id="@+id/CardHexNbr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/outfit_bold"
+                android:letterSpacing="0"
+                android:text="1ABC34339FD23"
+                android:textColor="#1C4984"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/name" />
+
+            <Button
+                android:id="@+id/HouseCreation"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="40dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/continuewith_background"
+                android:backgroundTint="#1C4984"
+                android:drawableLeft="@drawable/firebase_icon"
+                android:fontFamily="@font/outfit_medium"
+                android:letterSpacing="0"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:text="Create House"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/logosmarthousename"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.396"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/logosmarthousename"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="30dp"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/smarthousestaticname" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
