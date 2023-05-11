@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "215114955615",
+    "firebase_url": "https://smarthouses-9fa72-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "smarthouses-9fa72",
+    "storage_bucket": "smarthouses-9fa72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215114955615:android:9490089c3bf393927914ea",
+        "android_client_info": {
+          "package_name": "com.example.smarthome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215114955615-eln27cmmln0t8a66ejgdfn958qasakh1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smarthome",
+            "certificate_hash": "0839da578f48fee2924426d2eb747092249fa137"
+          }
+        },
+        {
+          "client_id": "215114955615-416gios67mad4a53k561gsgl3fnbo35j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5dBiMhfvIQfOcgSy5bVu91pfgjFCKjyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215114955615-416gios67mad4a53k561gsgl3fnbo35j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
