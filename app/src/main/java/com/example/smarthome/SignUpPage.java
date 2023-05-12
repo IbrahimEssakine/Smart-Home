@@ -69,8 +69,7 @@ import java.util.ArrayList;
 //                finish();
                 GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
                 if (account!=null) {
-                    String Name=account.getGivenName();
-                    String Family=account.getFamilyName();
+                    String Username=account.getDisplayName();
                     String Mail=account.getEmail();
                     firestore=FirebaseFirestore.getInstance();
 
@@ -83,11 +82,10 @@ import java.util.ArrayList;
                             gsc.signOut();
                             SignIn();
                         }else{
-                            data_user_list.add(0,Name);
-                            data_user_list.add(1,Family);
-                            data_user_list.add(2,Mail);
+                            data_user_list.add(0,Username);
+                            data_user_list.add(1,Mail);
 
-                            Toast.makeText( this, "Email : "+Mail+" Name : "+Name, Toast.LENGTH_SHORT).show();
+                            Toast.makeText( this, "Email : "+Mail+" Username : "+Username, Toast.LENGTH_SHORT).show();
                             HomeActivity();
                         }
                     });

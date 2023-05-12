@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Smart Home</string>
+    <string name="select">Select Item</string>
 </resources>

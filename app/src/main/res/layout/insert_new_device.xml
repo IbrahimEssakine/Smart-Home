@@ -1,50 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
     >
 
      <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+         android:gravity="center">
+
 
          <ImageView
              android:id="@+id/imageView"
-             android:layout_width="match_parent"
+             android:layout_width="141dp"
              android:layout_height="wrap_content"
              tools:srcCompat="@tools:sample/avatars" />
 
-         <com.google.android.material.textfield.TextInputLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:hint="Select Device"
-             >
-
-             <com.google.android.material.textfield.TextInputEditText
-                 android:layout_width="match_parent"
-                 android:layout_height="63dp" />
-
-         </com.google.android.material.textfield.TextInputLayout>
          <EditText
              android:id="@+id/Name"
              android:layout_width="match_parent"
              android:layout_height="58dp"
-             android:hint="Name" />
+             android:hint="Name"
+             android:textSize="40dp"
+             android:textColorHint="#101010"/>
+
+         <com.google.android.material.textfield.TextInputLayout
+             android:id="@+id/outlinedTextField"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:hint="Name"
+             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+             <com.google.android.material.textfield.TextInputEditText
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 />
+
+         </com.google.android.material.textfield.TextInputLayout>
 
          <EditText
              android:id="@+id/ID"
              android:layout_width="match_parent"
              android:layout_height="58dp"
-             android:hint="ID" />
+             android:hint="ID"
+             android:textSize="40dp"
+             android:textColorHint="#101010"/>
+
          <EditText
              android:id="@+id/Port"
              android:layout_width="match_parent"
              android:layout_height="58dp"
              android:hint="Port"
-             />
+             android:textSize="40dp"
+             android:textColorHint="#101010"/>
      </LinearLayout>
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

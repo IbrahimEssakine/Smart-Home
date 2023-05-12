@@ -1,5 +1,8 @@
 package com.example.smarthome;
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -48,9 +51,10 @@ public class CreateHousePage extends AppCompatActivity {
                     public void onSuccess(DocumentReference HouseID) {
                         //Toast.makeText(CreateHousePage.this,"DocumentSnapshot written with ID: " + documentReference.getId(),Toast.LENGTH_SHORT).show();
                         Map<String, Object> user_data = new HashMap<>();
-                        user_data.put("Name", user_data_list.get(0));
-                        user_data.put("Last Name",user_data_list.get(1));
+                        user_data.put("Username", user_data_list.get(0));
+                        user_data.put("Phone",user_data_list.get(1));
                         user_data.put("Email", user_data_list.get(2));
+                        user_data.put("Password", user_data_list.get(3));
                         user_data.put("Houses", Arrays.asList(HouseID.getId()));
                         firestore.collection("user").add(user_data);
 
@@ -61,6 +65,9 @@ public class CreateHousePage extends AppCompatActivity {
                         //usersRef.setValue(Sensor);
                         DatabaseReference usersRefPass = database.child("Password");
                         usersRefPass.setValue(Password.getText().toString());
+
+                        HouseCreation.setBackgroundColor(Color.GRAY);
+                        HouseCreation.setClickable(false);
                     }
                 });
             }

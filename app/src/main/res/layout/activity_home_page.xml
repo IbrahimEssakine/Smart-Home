@@ -7,29 +7,16 @@
     android:background="#FCFCFC"
     tools:context=".HomePage">
 
-    <TextView
-        android:id="@+id/EmailTxt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/outfit_semibold"
-        android:letterSpacing="0"
-        android:lineSpacingMultiplier="1.4"
-        android:text="your email"
-        android:textAlignment="textStart"
-        android:textColor="#707070"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -49,6 +36,7 @@
                 android:backgroundTint="#1C4984"
                 android:drawableLeft="@drawable/baseline_check_24"
                 android:fontFamily="@font/outfit_medium"
+                android:gravity="center"
                 android:letterSpacing="0"
                 android:paddingLeft="15dp"
                 android:paddingRight="30dp"
@@ -61,6 +49,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Password" />
 
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Password"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:ems="10"
+                android:inputType="numberPassword"
+                android:paddingLeft="10dp"
+                android:hint="Password"
+                android:textColorHint="#101010"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/PhoneNbr"
+                app:startIconDrawable="@drawable/baseline_lock_24"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
             <ImageView
                 android:id="@+id/logosmarthousename"
                 android:layout_width="80dp"
@@ -72,52 +85,53 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/smarthousestaticname" />
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/UsernameTxt"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="300dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:ems="10"
+                android:textColorHint="#101010"
+                android:hint="Username"
                 android:inputType="text"
                 android:paddingLeft="10dp"
-                android:text="Name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Setupacc" />
+                app:layout_constraintTop_toBottomOf="@+id/Setupacc"
+                app:endIconMode="custom"
+                app:startIconDrawable="@drawable/baseline_person_24"
+                >
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/PhoneNbr"
-                android:layout_width="300dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="18dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/UsernameTxt" >
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/baseline_smartphone_24"
-                    android:hint="Phone number"
-                    android:textColorHint="#d8d8d8"
-                    android:fontFamily="@font/outfit_light"
                     />
+
             </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/Password"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/PhoneNbr"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="300dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:drawableLeft="@drawable/baseline_lock_24"
-                android:ems="10"
-                android:inputType="numberPassword"
-                android:paddingLeft="10dp"
-                android:text="Password"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/PhoneNbr" />
+                app:startIconDrawable="@drawable/baseline_smartphone_24"
+                android:textColorHint="#101010"
+                android:hint="Phone Number"
+                app:layout_constraintTop_toBottomOf="@+id/UsernameTxt"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <TextView
                 android:id="@+id/Setupacc"
@@ -135,13 +149,26 @@
 
             <ImageView
                 android:id="@+id/Setupacc_illu"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:layout_marginTop="32dp"
+                android:layout_width="265dp"
+                android:layout_height="242dp"
+                android:layout_marginTop="52dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/setup_acc" />
+
+            <TextView
+                android:id="@+id/EmailTxt"
+                android:layout_width="296dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="13dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toTopOf="@+id/Setupacc_illu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

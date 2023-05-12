@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import java.util.ArrayList;
 public class HomePage extends AppCompatActivity {
-    TextView UsernameTxt, EmailTxt,PhoneNbr;
+    TextView UsernameTxt, PasswordTxt,PhoneNbr,EmailTxt;
     ArrayList<String>data_user=new ArrayList<>();
     Button CreateHouse;
     @Override
@@ -20,12 +20,12 @@ public class HomePage extends AppCompatActivity {
 
         UsernameTxt = findViewById(R.id.UsernameTxt);
         PhoneNbr = findViewById(R.id.PhoneNbr);
-        EmailTxt = findViewById(R.id.Password);
+        PasswordTxt = findViewById(R.id.Password);
+        EmailTxt = findViewById(R.id.EmailTxt);
         CreateHouse= findViewById(R.id.CreateHouse);
 
         UsernameTxt.setText(user_data_list.get(0));
-        PhoneNbr.setText(user_data_list.get(1));
-        EmailTxt.setText(user_data_list.get(2));
+        EmailTxt.setText(user_data_list.get(1));
 
         CreateHouse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +33,7 @@ public class HomePage extends AppCompatActivity {
                 data_user.add(0,UsernameTxt.getText().toString());
                 data_user.add(1,PhoneNbr.getText().toString());
                 data_user.add(2,EmailTxt.getText().toString());
+                data_user.add(3,PasswordTxt.getText().toString());
                 Intent intent=new Intent(getApplicationContext(), CreateHousePage.class);
                 intent.putExtra("UserDataListChange",data_user);
                 finish();
