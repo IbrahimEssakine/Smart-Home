@@ -19,26 +19,26 @@
         android:background="@drawable/back_arrow_background"
 
         android:drawableEnd="@drawable/baseline_arrow_back_ios_24"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="54dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/buttonback">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:minHeight="676dp">
+            >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/backgroundLayout"
-                android:layout_width="330dp"
-                android:layout_height="330dp"
+                android:layout_width="340dp"
+                android:layout_height="340dp"
                 android:background="@drawable/bg"
                 android:backgroundTint="#F5F5F5"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
                 android:id="@+id/Hellotext"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginStart="30sp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/outfit_bold"
                 android:letterSpacing="0"
@@ -77,15 +77,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="30dp"
                 android:fontFamily="@font/outfit_semibold"
                 android:letterSpacing="0"
                 android:lineSpacingMultiplier="1.4"
                 android:text="Assuming that you have a google account, you need to press the button below so you will create a Firebase account "
-                android:textAlignment="textStart"
+                android:textAlignment="center"
                 android:textColor="#707070"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Hellotext" />
@@ -94,10 +94,9 @@
                 android:id="@+id/buttoncreatfirebaseacc"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/continuewith_background"
-                android:backgroundTint="#1C4984"
                 android:drawableLeft="@drawable/google_icon"
                 android:fontFamily="@font/outfit_medium"
                 android:letterSpacing="0"
@@ -105,7 +104,7 @@
                 android:paddingRight="30dp"
                 android:text="Sign in with Google"
                 android:textAllCaps="false"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:textSize="16dp"
                 app:layout_constraintBottom_toTopOf="@+id/logosmarthousename"
                 app:layout_constraintEnd_toEndOf="parent"
