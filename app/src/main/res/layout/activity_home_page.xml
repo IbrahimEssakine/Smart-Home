@@ -108,6 +108,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
+                    android:inputType="numberPassword"
                     android:textColor="#1C4984" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -120,7 +121,7 @@
                 android:layout_marginTop="12dp"
                 android:ems="10"
                 android:hint="Username"
-                android:inputType="text"
+
                 android:textColorHint="#7B8DA3"
                 app:boxStrokeColor="#1C4984"
                 app:startIconTint="@color/blue_main"
@@ -133,6 +134,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:textColor="#1C4984" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -145,7 +147,7 @@
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/outfit_light"
                 android:hint="Phone number"
-                android:inputType="phone"
+
                 android:textColorHint="#7B8DA3"
                 app:boxStrokeColor="#1C4984"
                 app:startIconTint="@color/blue_main"
@@ -158,6 +160,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
+                    android:inputType="phone"
                     android:textColor="#1C4984" />
             </com.google.android.material.textfield.TextInputLayout>
 

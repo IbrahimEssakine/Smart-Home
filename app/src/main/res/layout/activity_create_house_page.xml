@@ -75,7 +75,7 @@
                 android:layout_marginTop="32dp"
                 android:ems="10"
                 android:hint="Your House's Name"
-                android:inputType="text"
+
                 android:textColorHint="#7B8DA3"
                 app:boxStrokeColor="#1C4984"
                 app:startIconDrawable="@drawable/baseline_home_24"
@@ -87,6 +87,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:textColor="#1C4984" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -100,7 +101,7 @@
                 android:fontFamily="@font/outfit_light"
                 android:hint="ID Card Code"
                 app:startIconDrawable="@drawable/baseline_nfc_24"
-                android:inputType="text"
+
                 android:textColorHint="#7B8DA3"
                 app:boxStrokeColor="#1C4984"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -112,6 +113,7 @@
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:text="1ABC34339FD23"
+                    android:inputType="text"
                     android:textColor="#1C4984" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -123,7 +125,7 @@
                 android:layout_marginTop="18dp"
                 android:ems="10"
                 android:hint="Password"
-                android:inputType="numberPassword"
+
                 android:textColorHint="#7B8DA3"
                 app:boxStrokeColor="@color/blue_main"
                 app:endIconMode="password_toggle"
@@ -137,6 +139,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
+                    android:inputType="numberPassword"
                     android:textColor="#1C4984" />
 
             </com.google.android.material.textfield.TextInputLayout>
