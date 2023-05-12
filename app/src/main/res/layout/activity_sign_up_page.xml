@@ -11,15 +11,19 @@
 
     <Button
         android:id="@+id/buttonback"
-        android:layout_width="48dp"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
 
         android:layout_marginStart="6dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="22dp"
         android:background="@drawable/back_arrow_background"
-
-        android:drawableEnd="@drawable/baseline_arrow_back_ios_24"
-        android:text=""
+        android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
+        android:textColor="#1C4984"
+        android:paddingLeft="20dp"
+        android:paddingRight="30dp"
+        android:textSize="16dp"
+        android:text="Back"
+        android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,8 +41,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/backgroundLayout"
-                android:layout_width="340dp"
-                android:layout_height="340dp"
+                android:layout_width="320dp"
+                android:layout_height="320dp"
                 android:background="@drawable/bg"
                 android:backgroundTint="#F5F5F5"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,13 +66,13 @@
                 android:id="@+id/Hellotext"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/outfit_bold"
                 android:letterSpacing="0"
                 android:text="Create Your Account"
                 android:textColor="#1C4984"
                 android:textSize="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/backgroundLayout" />
 
@@ -94,7 +98,7 @@
                 android:id="@+id/buttoncreatfirebaseacc"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
+                android:layout_marginTop="28dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/continuewith_background"
                 android:drawableLeft="@drawable/google_icon"
