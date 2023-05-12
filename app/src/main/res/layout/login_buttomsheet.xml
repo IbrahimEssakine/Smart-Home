@@ -39,7 +39,7 @@
         android:letterSpacing="0"
         android:paddingLeft="15dp"
         android:paddingRight="30dp"
-        android:text="Continue with Firebase"
+        android:text="Continue with Google"
         android:textAllCaps="false"
         android:textColor="#000"
         android:textSize="16dp"

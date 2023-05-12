@@ -20,7 +20,7 @@ public class HomePage extends AppCompatActivity {
 
         UsernameTxt = findViewById(R.id.UsernameTxt);
         PhoneNbr = findViewById(R.id.PhoneNbr);
-        EmailTxt = findViewById(R.id.EmailTxt);
+        EmailTxt = findViewById(R.id.Password);
         CreateHouse= findViewById(R.id.CreateHouse);
 
         UsernameTxt.setText(user_data_list.get(0));

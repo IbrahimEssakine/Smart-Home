@@ -1,177 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FCFCFC"
-    android:orientation="vertical"
     tools:context=".HomePage">
-    <ScrollView
+
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FCFCFC"
-            android:orientation="vertical">
+        <Button
+            android:id="@+id/CreateHouse"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/continuewith_background"
+            android:backgroundTint="#1C4984"
+            android:drawableLeft="@drawable/baseline_check_24"
+            android:fontFamily="@font/outfit_medium"
+            android:letterSpacing="0"
+            android:paddingLeft="15dp"
+            android:paddingRight="30dp"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/logosmarthousename"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <Button
-                android:id="@+id/buttonback"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+        <ImageView
+            android:id="@+id/logosmarthousename"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/smarthousestaticname" />
 
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/back_arrow_background"
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/UsernameTxt"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="28dp"
+            android:drawableLeft="@drawable/baseline_person_24"
+            android:ems="10"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:text="Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Setupacc" />
 
-                android:drawableEnd="@drawable/baseline_arrow_back_ios_24"
-                android:text=""
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/PhoneNbr"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="18dp"
+            android:drawableLeft="@drawable/baseline_smartphone_24"
+            android:ems="10"
+            android:inputType="phone"
+            android:paddingLeft="10dp"
+            android:text="Phone number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/UsernameTxt" />
 
-            <TextView
-                android:id="@+id/SignUp"
-                android:layout_width="214dp"
-                android:layout_height="51dp"
-                android:layout_marginLeft="110dp"
-                android:fontFamily="@font/outfit_bold"
-                android:gravity="center"
-                android:letterSpacing="0"
-                android:text="Sign Up"
-                android:textColor="#1C4984"
-                android:textSize="38dp"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="75dp" />
+        <EditText
+            android:id="@+id/Password"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="18dp"
+            android:ems="10"
+            android:inputType="numberPassword"
+            android:text="Password"
+            android:drawableLeft="@drawable/baseline_lock_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PhoneNbr" />
 
-            <TextView
-                android:id="@+id/name11"
-                android:layout_width="119dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="40dp"
-                android:fontFamily="@font/outfit_bold"
-                android:letterSpacing="0"
-                android:text="Name"
-                android:textColor="#1C4984"
-                android:textSize="32dp"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="153dp" />
+        <TextView
+            android:id="@+id/Setupacc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:fontFamily="@font/outfit_bold"
+            android:letterSpacing="0"
+            android:text="Set Up Your Account"
+            android:textColor="#1C4984"
+            android:textSize="38dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Setupacc_illu" />
 
-
-            <EditText
-                android:id="@+id/UsernameTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="110dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/outfit_bold"
-                android:letterSpacing="0"
-                android:textColor="#1C4984"
-                android:textSize="29dp"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="221dp" />
-
-            <TextView
-                android:id="@+id/name9"
-                android:layout_width="205dp"
-                android:layout_height="55dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/outfit_bold"
-                android:letterSpacing="0"
-                android:text="Last Name"
-                android:textColor="#1C4984"
-                android:textSize="32dp"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="286dp" />
-
-            <EditText
-                android:id="@+id/PhoneNbr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="110dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/outfit_bold"
-                android:letterSpacing="0"
-                android:textColor="#1C4984"
-                android:textSize="29dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:layout_editor_absoluteY="350dp" />
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="119dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/outfit_bold"
-                android:letterSpacing="0"
-                android:text="Email"
-                android:textColor="#1C4984"
-                android:textSize="32dp"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="411dp" />
-
-            <TextView
-                android:id="@+id/EmailTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="110dp"
-                android:layout_marginTop="20dp"
-                android:editable="false"
-                android:fontFamily="@font/outfit_bold"
-                android:letterSpacing="0"
-                android:text="Email"
-                android:textColor="#1C4984"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/name" />
-
-            <Button
-                android:id="@+id/CreateHouse"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="50dp"
-                android:layout_marginBottom="88dp"
-                android:background="@drawable/continuewith_background"
-                android:backgroundTint="#1C4984"
-                android:drawableLeft="@drawable/firebase_icon"
-                android:fontFamily="@font/outfit_medium"
-                android:letterSpacing="0"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
-                android:text="Create House"
-                android:textAllCaps="false"
-                android:textColor="#fff"
-                android:textSize="16dp"
-                app:layout_constraintBottom_toTopOf="@+id/logosmarthousename"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.396"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <ImageView
-                android:id="@+id/logosmarthousename"
-                android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="150dp"
-                android:layout_marginTop="30dp"
-                android:scaleX="1.5"
-                android:scaleY="1.5"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/smarthousestaticname" />
+        <ImageView
+            android:id="@+id/Setupacc_illu"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/setup_acc" />
 
 
-        </LinearLayout>
-    </ScrollView>
+<!--            <EditText-->
+        <!--                android:id="@+id/NameTxt"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:fontFamily="@font/outfit_bold"-->
+        <!--                android:letterSpacing="0"-->
+        <!--                android:textColor="#1C4984"-->
+        <!--                android:textSize="29dp"-->
 
-</LinearLayout>
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toBottomOf="@+id/SignUp"-->
+        <!--                tools:ignore="MissingConstraints" />-->
+
+
+        <!--            <EditText-->
+        <!--                android:id="@+id/LNameTxt"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginLeft="110dp"-->
+        <!--                android:layout_marginTop="10dp"-->
+        <!--                android:layout_marginBottom="10dp"-->
+        <!--                android:fontFamily="@font/outfit_bold"-->
+        <!--                android:letterSpacing="0"-->
+        <!--                android:textColor="#1C4984"-->
+        <!--                android:textSize="29dp"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                tools:layout_editor_absoluteY="350dp" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/EmailTxt"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginTop="4dp"-->
+        <!--                android:layout_marginEnd="36dp"-->
+        <!--                android:editable="false"-->
+        <!--                android:fontFamily="@font/outfit_bold"-->
+        <!--                android:letterSpacing="0"-->
+        <!--                android:text="Email"-->
+        <!--                android:textColor="#1C4984"-->
+        <!--                android:textSize="24sp"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintTop_toBottomOf="@+id/name" />-->
+
+        <!--            <Button-->
+        <!--                android:id="@+id/CreateHouse"-->
+        <!--                android:layout_width="300dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_margin="50dp"-->
+        <!--                android:background="@drawable/continuewith_background"-->
+        <!--                android:backgroundTint="#1C4984"-->
+        <!--                android:drawableLeft="@drawable/firebase_icon"-->
+        <!--                android:fontFamily="@font/outfit_medium"-->
+        <!--                android:letterSpacing="0"-->
+        <!--                android:paddingLeft="40dp"-->
+        <!--                android:paddingRight="40dp"-->
+        <!--                android:text="Create House"-->
+        <!--                android:textAllCaps="false"-->
+        <!--                android:textColor="#fff"-->
+        <!--                android:textSize="16dp"-->
+        <!--                app:layout_constraintBottom_toTopOf="@+id/SignUp"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintStart_toStartOf="parent" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    </ScrollView>-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
