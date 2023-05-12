@@ -9,7 +9,7 @@
         android:background="#FCFCFC"
         tools:context=".SignUpPage">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonback"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
@@ -94,7 +94,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Hellotext" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttoncreatfirebaseacc"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"

@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/continuewith_background"
+                android:background="@drawable/button_next"
                 android:backgroundTint="#1C4984"
                 android:drawableLeft="@drawable/baseline_check_24"
                 android:fontFamily="@font/outfit_medium"
@@ -90,21 +90,24 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="12dp"
                 android:ems="10"
                 android:hint="Password"
                 android:inputType="numberPassword"
-                android:textColorHint="#d8d8d8"
-                app:boxStrokeColor="#1C4984"
+                android:textColorHint="#7B8DA3"
+                app:boxStrokeColor="@color/blue_main"
                 app:endIconMode="password_toggle"
+                app:startIconDrawable="@drawable/baseline_lock_24"
+                app:startIconTint="@color/blue_main"
+                app:endIconTint="#7B8DA3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/PhoneNbr"
-                app:startIconDrawable="@drawable/baseline_lock_24">
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="300dp"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:textColor="#1C4984" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -114,64 +117,47 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="12dp"
                 android:ems="10"
                 android:hint="Username"
                 android:inputType="text"
-                android:textColorHint="#d8d8d8"
+                android:textColorHint="#7B8DA3"
                 app:boxStrokeColor="#1C4984"
+                app:startIconTint="@color/blue_main"
+                app:startIconDrawable="@drawable/baseline_person_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Setupacc"
-                app:startIconDrawable="@drawable/baseline_person_24">
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="300dp"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:textColor="#1C4984" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-            <!--            <com.google.android.material.textfield.TextInputLayout-->
-            <!--                android:id="@+id/PhoneNbr"-->
-            <!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-            <!--                android:layout_width="300dp"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginTop="18dp"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:startIconDrawable="@drawable/baseline_smartphone_24"-->
-            <!--                android:textColorHint="#101010"-->
-            <!--                android:hint="Phone Number"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/UsernameTxt"-->
-            <!--                >-->
-
-            <!--                <com.google.android.material.textfield.TextInputEditText-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    />-->
-
-            <!--            </com.google.android.material.textfield.TextInputLayout>-->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/PhoneNbr"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/outfit_light"
                 android:hint="Phone number"
-                android:textColorHint="#d8d8d8"
+                android:inputType="phone"
+                android:textColorHint="#7B8DA3"
                 app:boxStrokeColor="#1C4984"
-
+                app:startIconTint="@color/blue_main"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/UsernameTxt"
-                app:startIconDrawable="@drawable/baseline_smartphone_24">
+                app:startIconDrawable="@drawable/baseline_smartphone_24"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="300dp"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:textColor="#1C4984" />
             </com.google.android.material.textfield.TextInputLayout>
 

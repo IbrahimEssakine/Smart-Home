@@ -34,14 +34,17 @@
         app:layout_constraintStart_toEndOf="@+id/ImageAcc"
         app:layout_constraintTop_toTopOf="@+id/ImageAcc" />
 
-    <com.google.android.material.button.MaterialButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonSignOut"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
-        android:background="@drawable/back_arrow_background"
-        app:icon="@drawable/baseline_logout_24"
+        android:background="@drawable/sign_out_button"
+        android:drawableTop="@drawable/baseline_logout_24"
+        android:paddingTop="12dp"
+        android:paddingLeft="4dp"
+        android:drawableTint="#fff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,21 +70,20 @@
                 android:id="@+id/Setupacc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/outfit_bold"
                 android:letterSpacing="0"
                 android:text="Home Set Up"
                 android:textColor="#1C4984"
                 android:textSize="32dp"
-                app:layout_constraintBottom_toBottomOf="@+id/buttonback"
-                app:layout_constraintStart_toEndOf="@+id/buttonback"
-                app:layout_constraintTop_toTopOf="@+id/buttonback" />
+                app:layout_constraintStart_toStartOf="@+id/Welcometext"
+                app:layout_constraintTop_toBottomOf="@+id/buttonback" />
 
             <ImageView
                 android:id="@+id/Setuphouse_illu"
                 android:layout_width="250dp"
                 android:layout_height="250dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="22dp"
                 android:scaleX="1.2"
                 android:scaleY="1.2"
                 android:src="@drawable/setup_house"
@@ -89,12 +91,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Setupacc" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonback"
                 android:layout_width="124dp"
                 android:layout_height="48dp"
 
-                android:layout_marginTop="12dp"
                 android:background="@drawable/back_arrow_background"
                 android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
                 android:paddingLeft="20dp"
@@ -125,7 +126,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/Setuphouse_illu" />
 
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/CreateHouse"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
@@ -133,7 +134,8 @@
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/continuewith_background"
                 android:backgroundTint="#1C4984"
-                android:drawableLeft="@drawable/baseline_create_24"
+                android:drawableLeft="@drawable/baseline_add_home_24"
+                android:drawableTint="#fff"
                 android:fontFamily="@font/outfit_medium"
                 android:letterSpacing="0"
                 android:paddingLeft="15dp"

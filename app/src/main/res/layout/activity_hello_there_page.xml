@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray_bg"
     tools:context=".HelloTherePage">
     <ScrollView
         android:layout_width="match_parent"
@@ -12,7 +13,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FEFEFE">
+            >
 
 
             <pl.droidsonroids.gif.GifImageView
@@ -86,7 +87,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Hellotext" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_signup"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
