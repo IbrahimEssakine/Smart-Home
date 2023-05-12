@@ -1,15 +1,12 @@
-    package com.example.smarthome;
+package com.example.smarthome;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -19,19 +16,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.AggregateQuery;
 import com.google.firebase.firestore.AggregateQuerySnapshot;
 import com.google.firebase.firestore.AggregateSource;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-
 import java.util.ArrayList;
 
-
     public class SignUpPage extends AppCompatActivity {
-
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
     Button returnbackbutton ;
-
     FirebaseFirestore firestore;
     ArrayList<String> data_user_list=new ArrayList<>();
     @Override
@@ -83,7 +74,6 @@ import java.util.ArrayList;
                     String Mail=account.getEmail();
                     firestore=FirebaseFirestore.getInstance();
 
-
                     AggregateQuery countQuery = firestore.collection ("user").whereEqualTo("Email",Mail).count();
                     countQuery.get(AggregateSource.SERVER).addOnCompleteListener(tasks -> {
                     AggregateQuerySnapshot snapshot = tasks.getResult();
@@ -102,7 +92,6 @@ import java.util.ArrayList;
                         }
                     });
                 }
-
             } catch (ApiException e) {
                 Toast.makeText( this, "Cnx Error", Toast.LENGTH_SHORT).show();
             }

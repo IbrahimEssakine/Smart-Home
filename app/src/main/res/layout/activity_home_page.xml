@@ -63,7 +63,7 @@
 
 
             <EditText
-                android:id="@+id/NameTxt"
+                android:id="@+id/UsernameTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="110dp"
@@ -93,7 +93,7 @@
                 tools:layout_editor_absoluteY="286dp" />
 
             <EditText
-                android:id="@+id/LNameTxt"
+                android:id="@+id/PhoneNbr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="110dp"

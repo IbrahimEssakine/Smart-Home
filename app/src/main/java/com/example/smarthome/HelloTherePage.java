@@ -1,36 +1,20 @@
 package com.example.smarthome;
 
-import static java.lang.Math.abs;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
-
-import eightbitlab.com.blurview.BlurAlgorithm;
 import eightbitlab.com.blurview.BlurView;
-import eightbitlab.com.blurview.RenderEffectBlur;
-import eightbitlab.com.blurview.RenderScriptBlur;
 import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
 
 public class HelloTherePage extends AppCompatActivity {
-
-
     Button loginbutton ;
     Button signupbutton;
     BottomSheetBehavior bottomSheetBehavior;
@@ -40,23 +24,9 @@ public class HelloTherePage extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello_there_page);
-//        this.getWindow().getDecorView().setSystemUiVisibility(
-//                View.SYSTEM_UI_FLAG_IMMERSIVE
-//                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-//                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-//        );
-
-
-//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-//        this.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         ConstraintLayout bottomSheetLayout = findViewById(R.id.login_buttomsheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
-
-
         blurview = findViewById(R.id.blurbg);
-
-
         bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
@@ -79,15 +49,8 @@ public class HelloTherePage extends AppCompatActivity {
 
         });
 
-
-
-
-
         GifImageView gif = (GifImageView)findViewById(R.id.LogoGif);
         ((GifDrawable)gif.getDrawable()).stop();
-
-        // SignUp translate page section
-
         signupbutton = findViewById(R.id.button_signup);
         signupbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,11 +60,7 @@ public class HelloTherePage extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(R.anim.silde_in_right,R.anim.slide_out_left);
             }
-
         });
-
-
-
         // buttom sheet section
         loginbutton = findViewById(R.id.button_login);
         loginbutton.setOnClickListener(new View.OnClickListener() {
@@ -118,14 +77,6 @@ public class HelloTherePage extends AppCompatActivity {
                     });
                 }
             }
-
         });
-
-
-
-
-
     }
-
-
 }
