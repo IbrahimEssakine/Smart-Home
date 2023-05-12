@@ -19,7 +19,6 @@
         android:background="@drawable/back_arrow_background"
 
         android:drawableEnd="@drawable/baseline_arrow_back_ios_24"
-        android:text=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,16 +27,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="54dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:minHeight="676dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/backgroundLayout"
-                android:layout_width="350dp"
-                android:layout_height="350dp"
+                android:layout_width="330dp"
+                android:layout_height="330dp"
                 android:background="@drawable/bg"
                 android:backgroundTint="#F5F5F5"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -46,8 +47,8 @@
 
                 <ImageView
                     android:id="@+id/signup_illustration"
-                    android:layout_width="300dp"
-                    android:layout_height="300dp"
+                    android:layout_width="280dp"
+                    android:layout_height="280dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +62,7 @@
                 android:id="@+id/Hellotext"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="30sp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/outfit_bold"
                 android:letterSpacing="0"
