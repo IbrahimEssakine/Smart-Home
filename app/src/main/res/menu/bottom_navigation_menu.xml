@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/baseline_dashboard_24"
+        android:title="Home"
+        />
+
+    <item
+        android:id="@+id/statistics"
+        android:icon="@drawable/baseline_insert_chart_outlined_24"
+        android:title="Statistics"/>
+
+    <item
+        android:id="@+id/placeholder"
+        android:title=""/>
+
+    <item
+        android:id="@+id/manage"
+        android:icon="@drawable/baseline_other_houses_24"
+        android:title="Manage"/>
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/baseline_settings_24"
+        android:title="Settings"/>
+
+</menu>

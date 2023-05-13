@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragment">
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="Home"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="30sp"-->
+<!--        android:textColor="@color/blue_main"/>-->
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/signup_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/user_image" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/outfit_bold"
+            android:text="Hello ,  "
+            android:textSize="18dp"
+            app:layout_constraintStart_toEndOf="@+id/appCompatImageView"
+            app:layout_constraintTop_toTopOf="@+id/appCompatImageView" />
+
+        <TextView
+            android:id="@+id/UsernameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/outfit_medium"
+            android:text="Essakine Ibrahime"
+            android:textSize="18dp"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/back_arrow_background"
+
+            android:drawableTop="@drawable/baseline_search_24"
+            android:paddingTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/UsernameTxt"
+            app:layout_constraintTop_toTopOf="@+id/appCompatImageView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

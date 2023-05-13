@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FCFCFC"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        >
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            app:contentScrim="@color/blue_main"
+            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed|snap"
+            android:fitsSystemWindows="true"
+            app:expandedTitleMarginBottom="20dp"
+            app:expandedTitleMarginStart="15dp"
+            app:toolbarId="@id/layoutliketoolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutliketoolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways"
+                >
+
+                <androidx.appcompat.widget.AppCompatImageView
+
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="22dp"
+                    android:background="@drawable/signup_background"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/user_image" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="fljasdlfkjasdkljfkljasdlkfjkasdjkfjasdjfksdj" />
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabAlignmentMode="center"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="10dp"
+            app:fabCradleVerticalOffset="10dp"
+            app:hideOnScroll="true">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bottom_app_bar"
+                app:itemIconTint="@color/white"
+                app:itemTextColor="@color/white"
+                app:menu="@menu/bottom_navigation_menu" />
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:src="@drawable/baseline_add_24"
+            app:backgroundTint="@color/blue_sec"
+            app:fabCustomSize="70dp"
+            app:layout_anchor="@id/bottomAppBar"
+            app:maxImageSize="40dp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended"
+            app:tint="#fff"
+
+            />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
