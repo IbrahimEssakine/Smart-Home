@@ -130,13 +130,16 @@
     <eightbitlab.com.blurview.BlurView
         android:id="@+id/blurbg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="461dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+
         >
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            >
 
             <include layout="@layout/login_buttomsheet" />
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
