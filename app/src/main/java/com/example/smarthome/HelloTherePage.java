@@ -1,6 +1,7 @@
 package com.example.smarthome;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
@@ -9,21 +10,45 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+
 import eightbitlab.com.blurview.BlurView;
 import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
 
 public class HelloTherePage extends AppCompatActivity {
     Button loginbutton ;
-    Button signupbutton;
+    Button signupbutton, Continuewithfirebase;
     BottomSheetBehavior bottomSheetBehavior;
     BlurView blurview ;
+    GoogleSignInOptions gso;
+    GoogleSignInClient gsc;
+    FirebaseFirestore firestore;
+    Boolean loginx=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hello_there_page);
+
+        gso=new GoogleSignInOptions. Builder (GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        gsc = GoogleSignIn.getClient(this,gso);
+
         ConstraintLayout bottomSheetLayout = findViewById(R.id.login_buttomsheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
         blurview = findViewById(R.id.blurbg);
@@ -63,20 +88,67 @@ public class HelloTherePage extends AppCompatActivity {
         });
         // buttom sheet section
         loginbutton = findViewById(R.id.button_login);
+        Continuewithfirebase = findViewById(R.id.buttoncontinue);
+
+        loginbutton.setClickable(true);
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(HelloTherePage.this, loginx.toString(), Toast.LENGTH_SHORT).show();
                 if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                    Button Continuewithfirebase = findViewById(R.id.buttoncontinue);
                     Continuewithfirebase.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             Toast.makeText(HelloTherePage.this, "Redirecting To Your Firebase Account", Toast.LENGTH_SHORT).show();
+                            SignIn();
                         }
                     });
                 }
             }
         });
+
+    }
+    private void SignIn() {
+        Intent intent=gsc.getSignInIntent();
+        startActivityForResult(intent, 100);
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult (requestCode, resultCode, data);
+        if (requestCode==100) {
+            Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                task.getResult (ApiException.class);
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+                if (account!=null) {
+                    String Mail = account.getEmail();
+                    firestore = FirebaseFirestore.getInstance();
+                    firestore.collection("user")
+                            .whereEqualTo("Email", Mail).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    for (DocumentSnapshot doc : task.getResult()) {
+                                        if (!doc.contains("Houses")) {
+                                            Intent intent = new Intent(getApplicationContext(), Waiting_Room.class);
+                                            finish();
+                                            startActivity(intent);
+                                        }else{
+                                            Toast.makeText(HelloTherePage.this, "Srbik akhay mouad gad dik interface", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+                            });
+                }
+            } catch (ApiException e) {
+                Toast.makeText( this, "Cnx Error", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 }

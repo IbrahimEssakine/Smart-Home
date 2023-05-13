@@ -32,7 +32,8 @@ public class Waiting_Room extends AppCompatActivity {
         AppCompatButton buttonSignOut,CreateHouse;
          FirebaseFirestore firestore;
          AppCompatButton back;
-         ArrayList<String> data_user_list=new ArrayList<>();
+        ArrayList<String> data_user_list=new ArrayList<>();
+        ArrayList<Boolean> login=new ArrayList<>();
         @Override
         protected void onCreate(Bundle savedInstanceState) {
 
@@ -100,7 +101,7 @@ public class Waiting_Room extends AppCompatActivity {
                                         if (doc.contains("Houses")) {
                                             Intent intent = new Intent(getApplicationContext(), HelloTherePage.class);
                                             finish();
-                                            startActivity(intent);
+                                            startActivityForResult(intent,3);
                                         }
                                     }
                                 }
