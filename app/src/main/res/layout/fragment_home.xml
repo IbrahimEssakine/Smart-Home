@@ -6,19 +6,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
 
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:text="Home"-->
-<!--        android:gravity="center"-->
-<!--        android:textSize="30sp"-->
-<!--        android:textColor="@color/blue_main"/>-->
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
+
+
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/appCompatImageView"
@@ -38,6 +31,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/outfit_bold"
+            android:textColor="@color/blue_main"
             android:text="Hello ,  "
             android:textSize="18dp"
             app:layout_constraintStart_toEndOf="@+id/appCompatImageView"
@@ -50,8 +44,21 @@
             android:fontFamily="@font/outfit_medium"
             android:text="Essakine Ibrahime"
             android:textSize="18dp"
+            android:textColor="@color/blue_main"
             app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/DevicesTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/outfit_medium"
+            android:text="12 devices On"
+            android:textColor="#92A5C6"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/UsernameTxt" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="48dp"
@@ -60,24 +67,193 @@
             android:background="@drawable/back_arrow_background"
 
             android:drawableTop="@drawable/baseline_search_24"
-            android:paddingTop="15dp"
+            android:paddingTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/UsernameTxt"
             app:layout_constraintTop_toTopOf="@+id/appCompatImageView" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:background="@drawable/back_arrow_background"
+            android:drawableRight="@drawable/baseline_arrow_drop_down_24"
+            android:fontFamily="@font/outfit_bold"
+            android:text="My Home"
+            android:textAllCaps="false"
+            android:textColor="@color/blue_main"
+            app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView2"
+                android:layout_width="344dp"
+                android:layout_height="230dp"
+                android:scaleY="1.1"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/weath_backgroud" />
+
+            <TextView
+                android:id="@+id/CityTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/outfit_medium"
+                android:text="Beni Mellal , "
+                android:textColor="#B4D8FF"
+                app:layout_constraintStart_toStartOf="@+id/appCompatImageView2"
+                app:layout_constraintTop_toTopOf="@+id/appCompatImageView2" />
+
+            <TextView
+                android:id="@+id/Country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_medium"
+                android:text=" Morocco"
+                android:textColor="#B4D8FF"
+                app:layout_constraintStart_toEndOf="@+id/CityTxt"
+                app:layout_constraintTop_toTopOf="@+id/CityTxt" />
+
+            <TextView
+                android:id="@+id/StateWeather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/outfit_medium"
+                android:text="Little Rain"
+                android:textColor="#fff"
+                android:textSize="40dp"
+                app:layout_constraintStart_toStartOf="@+id/CityTxt"
+                app:layout_constraintTop_toBottomOf="@+id/Country" />
+
+            <TextView
+                android:id="@+id/WeatherDescribtion"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/outfit_medium"
+                android:text="Lowing the temperature , below 16°C out cost by 80°C"
+                android:textColor="#B4D8FF"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="@+id/StateWeather"
+                app:layout_constraintTop_toBottomOf="@+id/StateWeather" />
+
+            <TextView
+                android:id="@+id/TempDegree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/outfit_medium"
+                android:text="18 °C"
+                android:textColor="#fff"
+                android:textSize="35dp"
+                app:layout_constraintStart_toStartOf="@+id/WeatherDescribtion"
+                app:layout_constraintTop_toBottomOf="@+id/WeatherDescribtion" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="170dp"
+                app:layout_constraintStart_toStartOf="@+id/appCompatImageView2"
+                app:layout_constraintTop_toTopOf="@+id/appCompatImageView2"
+                app:srcCompat="@drawable/cloud_weather" />
 
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/button_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="12dp"
+                        android:background="@drawable/back_arrow_background"
+                        android:fontFamily="@font/outfit_bold"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="Living Room (4)"
+                        android:backgroundTint="@color/blue_main"
+                        android:textAllCaps="false"
+                        android:textColor="@color/gray_bg" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/button_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="12dp"
+                        android:background="@drawable/back_arrow_background"
+                        android:fontFamily="@font/outfit_medium"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="Kitchen"
+                        android:backgroundTint="#e3e3e3"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/button_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="12dp"
+                        android:background="@drawable/back_arrow_background"
+                        android:fontFamily="@font/outfit_medium"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="Bedroom"
+                        android:backgroundTint="#e3e3e3"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black" />
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/button_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="12dp"
+                        android:background="@drawable/back_arrow_background"
+                        android:fontFamily="@font/outfit_medium"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="Bathroom"
+                        android:backgroundTint="#e3e3e3"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                      />
+
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </ScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
