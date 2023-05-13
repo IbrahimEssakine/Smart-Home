@@ -84,7 +84,6 @@ import java.util.ArrayList;
                         }else{
                             data_user_list.add(0,Username);
                             data_user_list.add(1,Mail);
-
                             Toast.makeText( this, "Email : "+Mail+" Username : "+Username, Toast.LENGTH_SHORT).show();
                             HomeActivity();
                         }

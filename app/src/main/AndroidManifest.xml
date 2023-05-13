@@ -16,6 +16,9 @@
             android:name=".CreateHousePage"
             android:exported="false" />
         <activity
+            android:name=".Waiting_Room"
+            android:exported="false" />
+        <activity
             android:name=".HomePage"
             android:exported="false" />
         <activity
