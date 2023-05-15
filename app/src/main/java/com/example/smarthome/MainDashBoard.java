@@ -14,16 +14,14 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.smarthome.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainDashBoard extends AppCompatActivity {
 
-    ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_main_dash_board_active);
+        setContentView(R.layout.activity_main_dash_board_active);
         replaceFragment(new HomeFragment(),true);
         BottomNavigationView bottomNavigationView= findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

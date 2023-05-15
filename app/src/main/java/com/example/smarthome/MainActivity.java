@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     @Override
                     public void run(){
-//                        startActivity( new Intent( MainActivity.this,HelloTherePage.class));
+//                        startActivity( new Intent( MainActivity.this, MainDashBoard.class));
 //                        finish();
 
 
