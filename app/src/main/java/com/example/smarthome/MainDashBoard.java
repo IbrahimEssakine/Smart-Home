@@ -21,7 +21,7 @@ public class MainDashBoard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_main_dash_board_active);
+        setContentView(R.layout.activity_main_dash_board_active);
         replaceFragment(new HomeFragment(),true);
         BottomNavigationView bottomNavigationView= findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
