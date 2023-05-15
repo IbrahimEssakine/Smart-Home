@@ -20,9 +20,9 @@
 
     <TextView
         android:id="@+id/EmailTxt"
-        android:layout_width="wrap_content"
+        android:layout_width="285dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/outfit_semibold"
         android:letterSpacing="0"
         android:lineSpacingMultiplier="1.4"

@@ -3,7 +3,9 @@ package com.example.smarthome;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,9 +21,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.database.core.Tag;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -32,6 +37,7 @@ public class Waiting_Room extends AppCompatActivity {
         AppCompatButton buttonSignOut,CreateHouse;
          FirebaseFirestore firestore;
          AppCompatButton back;
+    ImageView userImage;
         ArrayList<String> data_user_list=new ArrayList<>();
         ArrayList<Boolean> login=new ArrayList<>();
         @Override
@@ -47,7 +53,9 @@ public class Waiting_Room extends AppCompatActivity {
             buttonSignOut=findViewById(R.id.buttonSignOut);
             CreateHouse=findViewById(R.id.CreateHouse);
             back=findViewById(R.id.buttonback);
+            userImage=findViewById(R.id.ImageAcc);
             EmailTxt.setText(SignIn());
+
             data_user_list.add(0,EmailTxt.getText().toString());
             buttonSignOut.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -92,6 +100,8 @@ public class Waiting_Room extends AppCompatActivity {
                 GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
                 if (account!=null) {
                     String Mail = account.getEmail();
+                    Picasso.get().load(account.getPhotoUrl().toString()).into(userImage);
+                    Log.i("MO3MO3AZEAZE",account.getPhotoUrl().toString());
                     firestore = FirebaseFirestore.getInstance();
                     firestore.collection("user")
                             .whereEqualTo("Email", Mail).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
