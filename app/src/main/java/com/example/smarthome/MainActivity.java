@@ -46,9 +46,8 @@ public class MainActivity extends AppCompatActivity {
 //                        finish();
 
 
-
                         Intent intent=new Intent(MainActivity.this,HelloTherePage.class);
-                        intent.putExtra("login",false);
+
                         // Attach all the elements those you want to animate in design
                         Pair[]pairs=new Pair[1];
                         pairs[0]=new Pair<View, String>(gif,"GifImage");
@@ -60,19 +59,10 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent,options.toBundle());
                             finish();
                         }
-
-
-
-
-
-
-
                     }
                 }, 4000);
             }
         }, 1500);
-
-
 
     }
 }

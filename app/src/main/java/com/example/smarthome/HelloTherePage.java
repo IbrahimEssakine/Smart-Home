@@ -94,7 +94,6 @@ public class HelloTherePage extends AppCompatActivity {
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HelloTherePage.this, loginx.toString(), Toast.LENGTH_SHORT).show();
                 if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                     Continuewithfirebase.setOnClickListener(new View.OnClickListener() {
@@ -136,6 +135,7 @@ public class HelloTherePage extends AppCompatActivity {
                                             finish();
                                             startActivity(intent);
                                         }else{
+                                            openDialog();
                                             Toast.makeText(HelloTherePage.this, "Srbik akhay mouad gad dik interface", Toast.LENGTH_SHORT).show();
                                         }
                                     }
@@ -150,5 +150,9 @@ public class HelloTherePage extends AppCompatActivity {
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
+    public void openDialog(){
+        Dialog_Test dialog_test = new Dialog_Test();
+        dialog_test.show(getSupportFragmentManager(),"Example dialog");
     }
 }

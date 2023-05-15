@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dialog"
+    android:layout_width="wrap_content"
+    android:layout_height="423dp"
+    android:background="@android:color/transparent"
+    android:gravity="bottom|center_horizontal"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="372dp"
+        android:background="@drawable/shape"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:hint="Choose your Device"
+            android:paddingLeft="10dp"
+            android:textColorHint="#101010"
+            app:startIconDrawable="@drawable/baseline_person_24">
+
+            <AutoCompleteTextView
+                android:id="@+id/auto_complet"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginTop="30dp"
+            android:checkedButton="@+id/radio_button_1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_button_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:text="Input" />
+
+            <RadioButton
+                android:id="@+id/radio_button_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="Output" />
+
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Port"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/baseline_person_24"
+            android:ems="10"
+            android:hint="Port"
+            android:inputType="numberDecimal"
+            android:paddingLeft="10dp"
+            android:textColorHint="#101010">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Description"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/baseline_person_24"
+            android:ems="10"
+            android:hint="Description"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:textColorHint="#101010">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/icon1"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="-430dp"
+        android:src="@drawable/google_icon" />
+</LinearLayout>

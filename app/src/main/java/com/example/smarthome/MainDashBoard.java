@@ -14,12 +14,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.smarthome.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainDashBoard extends AppCompatActivity {
 
-    ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

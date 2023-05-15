@@ -18,6 +18,9 @@
             android:name=".MainDashBoard"
             android:exported="false" />
         <activity
+            android:name=".Dialog_Test"
+            android:exported="false" />
+        <activity
             android:name=".CreateHousePage"
             android:exported="false" />
         <activity

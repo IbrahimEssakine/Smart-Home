@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#00FFFFFF"
+    android:gravity="center_horizontal"
+    tools:context=".Dialog_Test"
+    >
+
+    <ImageView
+        android:id="@+id/ima"
+        android:layout_width="80dp"
+        android:layout_height="74dp"
+        android:src="@drawable/google_icon"
+
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Choose your Device"
+            android:paddingLeft="10dp"
+            android:textColorHint="#101010">
+
+            <AutoCompleteTextView
+                android:id="@+id/auto_complet"
+                android:layout_width="263dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:inputType="none"
+                android:text="Choose your Device" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:checkedButton="@+id/radio_button_1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_button_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:text="Input" />
+
+            <RadioButton
+                android:id="@+id/radio_button_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="Output" />
+
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Port"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/baseline_person_24"
+            android:ems="10"
+            android:hint="Port"
+            android:inputType="numberDecimal"
+            android:paddingLeft="10dp"
+            android:textColorHint="#101010">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="263dp"
+                android:layout_height="wrap_content"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Description"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/baseline_person_24"
+            android:ems="10"
+            android:hint="Username"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:textColorHint="#101010">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="263dp"
+                android:layout_height="wrap_content"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

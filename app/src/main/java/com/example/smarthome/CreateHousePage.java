@@ -35,7 +35,6 @@ import java.util.Map;
 
 public class CreateHousePage extends AppCompatActivity {
     TextInputLayout HName,Password,HexCode;
-
     FirebaseFirestore firestore;
     DatabaseReference database;
     AppCompatButton CancelCreateHouse,HouseCreation;
