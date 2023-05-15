@@ -75,12 +75,12 @@ public class HelloTherePage extends AppCompatActivity {
         });
         
         // collapse bottom sheet when screen is clicked
-        blurview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-            }
-        });
+//        blurview.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//            }
+//        });
 
 
         GifImageView gif = (GifImageView)findViewById(R.id.LogoGif);
