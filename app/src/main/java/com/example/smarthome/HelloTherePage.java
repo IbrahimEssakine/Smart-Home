@@ -144,8 +144,11 @@ public class HelloTherePage extends AppCompatActivity {
                                             finish();
                                             startActivity(intent);
                                         }else{
-                                            openDialog();
-                                            Toast.makeText(HelloTherePage.this, "Srbik akhay mouad gad dik interface", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(getApplicationContext(), MainDashBoard.class);
+                                            finish();
+                                            startActivityForResult(intent,3);
+                                            //openDialog();
+
                                         }
                                     }
                                 }
@@ -160,8 +163,5 @@ public class HelloTherePage extends AppCompatActivity {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
-    public void openDialog(){
-        Dialog_Test dialog_test = new Dialog_Test();
-        dialog_test.show(getSupportFragmentManager(),"Example dialog");
-    }
+
 }

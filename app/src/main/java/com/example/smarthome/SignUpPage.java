@@ -96,7 +96,9 @@ import java.util.ArrayList;
                                                         finish();
                                                         startActivity(intent);
                                                     }else{
-                                                        Toast.makeText(SignUpPage.this, "Srbik akhay mouad gad dik interface", Toast.LENGTH_SHORT).show();
+                                                        Intent intent = new Intent(getApplicationContext(), MainDashBoard.class);
+                                                        finish();
+                                                        startActivityForResult(intent,3);
                                                     }
                                                 }
                                             }

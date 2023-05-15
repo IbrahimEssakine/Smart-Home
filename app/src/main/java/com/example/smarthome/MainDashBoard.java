@@ -12,8 +12,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainDashBoard extends AppCompatActivity {
@@ -24,6 +26,13 @@ public class MainDashBoard extends AppCompatActivity {
         setContentView(R.layout.activity_main_dash_board_active);
         replaceFragment(new HomeFragment(),true);
         BottomNavigationView bottomNavigationView= findViewById(R.id.bottomNavigationView);
+        FloatingActionButton bottomAppBar = findViewById(R.id.bottomAppBar);
+        bottomAppBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -68,6 +77,10 @@ public class MainDashBoard extends AppCompatActivity {
                 return true;
             }
         });
+    }
+    public void openDialog(){
+        Dialog_Test dialog_test = new Dialog_Test();
+        dialog_test.show(getSupportFragmentManager(),"Example dialog");
     }
     private void replaceFragment(Fragment fragment , boolean trans ) {
         FragmentManager fragmentManager = getSupportFragmentManager();

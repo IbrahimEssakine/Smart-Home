@@ -99,7 +99,7 @@ public class Waiting_Room extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                     for (DocumentSnapshot doc : task.getResult()) {
                                         if (doc.contains("Houses")) {
-                                            Intent intent = new Intent(getApplicationContext(), HelloTherePage.class);
+                                            Intent intent = new Intent(getApplicationContext(), MainDashBoard.class);
                                             finish();
                                             startActivityForResult(intent,3);
                                         }
