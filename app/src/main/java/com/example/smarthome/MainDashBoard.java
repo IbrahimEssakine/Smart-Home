@@ -5,16 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -26,13 +20,13 @@ public class MainDashBoard extends AppCompatActivity {
         setContentView(R.layout.activity_main_dash_board_active);
         replaceFragment(new HomeFragment(),true);
         BottomNavigationView bottomNavigationView= findViewById(R.id.bottomNavigationView);
-        FloatingActionButton bottomAppBar = findViewById(R.id.bottomAppBar);
-        bottomAppBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDialog();
-            }
-        });
+        //FloatingActionButton bottomAppBar = findViewById(R.id.bottomAppBar);
+//        bottomAppBar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openDialog();
+//            }
+//        });
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -45,6 +39,7 @@ public class MainDashBoard extends AppCompatActivity {
                         if (!(currentFragment instanceof HomeFragment))
                         {
                             replaceFragment(new HomeFragment(),false);
+                            openDialog();
 
                         }
                         break;

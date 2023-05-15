@@ -100,7 +100,7 @@ public class CreateHousePage extends AppCompatActivity {
                         HouseCreation.setClickable(false);
                         Intent intent = new Intent(getApplicationContext(), MainDashBoard.class);
                         finish();
-                        startActivityForResult(intent,3);
+                        startActivity(intent);
                     }
                 });
             }

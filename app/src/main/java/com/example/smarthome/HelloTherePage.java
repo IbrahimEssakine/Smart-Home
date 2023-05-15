@@ -146,7 +146,7 @@ public class HelloTherePage extends AppCompatActivity {
                                         }else{
                                             Intent intent = new Intent(getApplicationContext(), MainDashBoard.class);
                                             finish();
-                                            startActivityForResult(intent,3);
+                                            startActivity(intent);
                                             //openDialog();
 
                                         }

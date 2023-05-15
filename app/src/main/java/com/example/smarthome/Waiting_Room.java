@@ -101,7 +101,7 @@ public class Waiting_Room extends AppCompatActivity {
                                         if (doc.contains("Houses")) {
                                             Intent intent = new Intent(getApplicationContext(), MainDashBoard.class);
                                             finish();
-                                            startActivityForResult(intent,3);
+                                            startActivity(intent);
                                         }
                                     }
                                 }
