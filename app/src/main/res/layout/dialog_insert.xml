@@ -33,6 +33,7 @@
                 android:id="@+id/auto_complet"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:inputType="none"
 
                 />
         </com.google.android.material.textfield.TextInputLayout>
@@ -91,13 +92,16 @@
             android:drawableLeft="@drawable/baseline_person_24"
             android:ems="10"
             android:hint="Description"
-            android:inputType="text"
+            android:inputType="textShortMessage"
             android:paddingLeft="10dp"
             android:textColorHint="#101010">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:inputType="textShortMessage"
+
+
 
                 />
         </com.google.android.material.textfield.TextInputLayout>

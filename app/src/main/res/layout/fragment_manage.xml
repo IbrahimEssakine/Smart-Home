@@ -9,9 +9,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="manage"
         android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="@color/blue_main"/>
+        android:text="manage"
+        android:textColor="@color/blue_main"
+        android:textSize="30sp" />
 
 </FrameLayout>

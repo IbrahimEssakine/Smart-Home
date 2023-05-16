@@ -21,7 +21,7 @@ import java.util.List;
 
 public class Dialog_Test extends AppCompatDialogFragment {
 
-    String[] items= {};
+    String[] items= {"smart","tv","led","smart","tv","led","smart","tv","led","smart","tv","led","smart","tv","led","smart","tv","led","smart","tv","led"};
     Devices_Data datas;
     AutoCompleteTextView autoCompleteTextView ;
     ImageView icon;
@@ -43,14 +43,12 @@ public class Dialog_Test extends AppCompatDialogFragment {
         icon = view.findViewById(R.id.ima);
 
         adapterItems = new ArrayAdapter<>(getActivity().getApplicationContext(),R.layout.list_items,items);
+
         autoCompleteTextView.setAdapter(adapterItems);
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
-                Toast.makeText(getActivity().getApplicationContext(), "your Item"+item, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity().getApplicationContext(), "drawable"+R.drawable.baseline_smartphone_24, Toast.LENGTH_SHORT).show();
-                String image_id = "device_1"+parent.getItemIdAtPosition(position);
                 icon.setImageResource(R.drawable.baseline_smartphone_24);
 
             }

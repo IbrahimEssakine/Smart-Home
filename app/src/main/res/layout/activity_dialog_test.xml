@@ -42,6 +42,7 @@
                 android:id="@+id/auto_complet"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:inputType="none"
 
                 />
         </com.google.android.material.textfield.TextInputLayout>
