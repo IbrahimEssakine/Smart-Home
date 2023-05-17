@@ -97,9 +97,12 @@ public class Waiting_Room extends AppCompatActivity {
                 account = GoogleSignIn.getLastSignedInAccount(this);
                 if (account!=null) {
                     String Mail = account.getEmail();
-                    userImage.setImageResource(R.drawable.user_image);
                     if(account.getPhotoUrl()!=null){
-                        Picasso.get().load(account.getPhotoUrl().toString()).into(userImage);}
+                        Picasso.get().load(account.getPhotoUrl().toString()).into(userImage);
+                        Log.i("Lux","AZEAZEAZEAZE");
+                    }else{
+                        userImage.setImageResource(R.drawable.user_image);
+                    }
                     firestore = FirebaseFirestore.getInstance();
                     firestore.collection("user")
                             .whereEqualTo("Email", Mail).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

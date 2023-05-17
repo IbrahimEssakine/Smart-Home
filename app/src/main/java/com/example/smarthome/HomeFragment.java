@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.widget.ListPopupWindowCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.View;
@@ -58,9 +59,13 @@ public class HomeFragment extends Fragment {
             autoCompleteTextView.setAdapter(adapterItems);
 
             Username.setText(user_data.get(4).toString());
-            userImage.setImageResource(R.drawable.user_image);
-            if(user_data.get(5)=="No"){
-                Picasso.get().load(user_data.get(5)).into(userImage);}
+            if(user_data.get(5)!="No"){
+                Log.i("Lux","AZEAZEAZEAZE");
+                Picasso.get().load(user_data.get(5)).into(userImage);
+            }else{
+                userImage.setImageResource(R.drawable.user_image);
+            }
+
 //            test.setText(user_houses.get(1).toString());
             //adapterItems = new ArrayAdapter<>(getActivity().getApplicationContext(),R.layout.list_items,user_houses);
             //list.setAdapter(adapterItems);

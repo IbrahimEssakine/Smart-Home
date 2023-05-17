@@ -79,13 +79,7 @@ public class CreateHousePage extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference HouseID) {
-                        //Toast.makeText(CreateHousePage.this,"DocumentSnapshot written with ID: " + documentReference.getId(),Toast.LENGTH_SHORT).show();
-//                        Map<String, Object> user_data = new HashMap<>();
-//                        user_data.put("Username", user_data_list.get(0));
-//                        user_data.put("Phone",user_data_list.get(1));
-//                        user_data.put("Email", user_data_list.get(2));
-//                        user_data.put("Password", user_data_list.get(3));
-//                        user_data.put("Houses", Arrays.asList(HouseID.getId()));
+
                         firestore.collection("user").document(User_ID).update("Houses", Arrays.asList(HouseID.getId()));
 
                         database = FirebaseDatabase.getInstance().getReference (HouseID.getId());

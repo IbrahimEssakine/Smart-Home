@@ -18,12 +18,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -61,13 +62,13 @@ public class MainDashBoard extends AppCompatActivity {
 
         replaceFragment(new HomeFragment(),true);
         BottomNavigationView bottomNavigationView= findViewById(R.id.bottomNavigationView);
-        //FloatingActionButton bottomAppBar = findViewById(R.id.bottomAppBar);
-//        bottomAppBar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openDialog();
-//            }
-//        });
+        FloatingActionButton floatingActionBar = findViewById(R.id.floatingactionbutton);
+        floatingActionBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -148,12 +149,12 @@ public class MainDashBoard extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
-    private String SignIn() {
+    private void SignIn() {
         Intent intent=gsc.getSignInIntent();
         startActivityForResult(intent, 100);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         String Mail = account.getEmail();
-        return Mail;
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

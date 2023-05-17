@@ -13,7 +13,7 @@
 
 
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/appCompatImageView"
             android:layout_width="64dp"
             android:layout_height="64dp"
@@ -22,6 +22,7 @@
             android:background="@drawable/signup_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/roundedImageView"
             app:srcCompat="@drawable/user_image" />
 
         <TextView
