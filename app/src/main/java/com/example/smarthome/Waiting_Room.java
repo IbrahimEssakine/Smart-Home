@@ -32,6 +32,7 @@ import java.util.ArrayList;
 
 public class Waiting_Room extends AppCompatActivity {
         TextView EmailTxt;
+        GoogleSignInAccount account;
         GoogleSignInOptions gso;
         GoogleSignInClient gsc;
         AppCompatButton buttonSignOut,CreateHouse;
@@ -62,16 +63,12 @@ public class Waiting_Room extends AppCompatActivity {
                 public void onClick(View v) {
                     gsc.signOut();
                     finish();
+                    Log.i("MO3MO3AZEAZE","cant be clicked");
                     Intent intent=new Intent(getApplicationContext(), HelloTherePage.class);
                     startActivity (intent);
                 }
             });
-            back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    EmailTxt.setText(SignIn());
-                }
-            });
+
             CreateHouse.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -86,7 +83,7 @@ public class Waiting_Room extends AppCompatActivity {
     private String SignIn() {
         Intent intent=gsc.getSignInIntent();
         startActivityForResult(intent, 100);
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        account = GoogleSignIn.getLastSignedInAccount(this);
         String Mail = account.getEmail();
         return Mail;
             }
@@ -97,18 +94,22 @@ public class Waiting_Room extends AppCompatActivity {
             Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 task.getResult (ApiException.class);
-                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+                account = GoogleSignIn.getLastSignedInAccount(this);
                 if (account!=null) {
                     String Mail = account.getEmail();
-                    Picasso.get().load(account.getPhotoUrl().toString()).into(userImage);
-                    Log.i("MO3MO3AZEAZE",account.getPhotoUrl().toString());
+                    userImage.setImageResource(R.drawable.user_image);
+                    if(account.getPhotoUrl()!=null){
+                        Picasso.get().load(account.getPhotoUrl().toString()).into(userImage);}
                     firestore = FirebaseFirestore.getInstance();
                     firestore.collection("user")
                             .whereEqualTo("Email", Mail).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                @Override
+                                 @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                     for (DocumentSnapshot doc : task.getResult()) {
+                                        Log.i("MO3MO3AZEAZE","inside complete");
+
                                         if (doc.contains("Houses")) {
+                                            Log.i("MO3MO3AZEAZE","inside no house");
                                             Intent intent = new Intent(getApplicationContext(), MainDashBoard.class);
                                             finish();
                                             startActivity(intent);

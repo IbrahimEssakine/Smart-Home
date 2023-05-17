@@ -2,10 +2,15 @@ package com.example.smarthome;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
@@ -23,13 +28,18 @@ public class HomePage extends AppCompatActivity {
     TextView EmailTxt;
     ArrayList<String>data_user=new ArrayList<>();
     Button CreateHouse;
+    GoogleSignInOptions gso;
+    GoogleSignInClient gsc;
     FirebaseFirestore firestore;
     DatabaseReference database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-
+        gso=new GoogleSignInOptions. Builder (GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        gsc = GoogleSignIn.getClient(this,gso);
         Bundle bundle = getIntent().getExtras();
         ArrayList<String> user_data_list = bundle.getStringArrayList("UserDataList");
 
@@ -49,7 +59,6 @@ public class HomePage extends AppCompatActivity {
                 data_user.add(1,PhoneNbr.getEditText().getText().toString());
                 data_user.add(2,EmailTxt.getText().toString());
                 data_user.add(3,PasswordTxt.getEditText().getText().toString());
-
                 firestore=FirebaseFirestore.getInstance();
                 Map<String, Object> user_data = new HashMap<>();
                 user_data.put("Username",UsernameTxt.getEditText().getText().toString() );
@@ -74,5 +83,11 @@ public class HomePage extends AppCompatActivity {
                 startActivity (intent);
             }
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        gsc.signOut();
     }
 }

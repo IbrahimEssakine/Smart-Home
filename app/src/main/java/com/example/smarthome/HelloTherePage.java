@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,7 +51,7 @@ public class HelloTherePage extends AppCompatActivity {
                 .requestEmail()
                 .build();
         gsc = GoogleSignIn.getClient(this,gso);
-
+            //SignIn();
         ConstraintLayout bottomSheetLayout = findViewById(R.id.login_buttomsheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
         blurview = findViewById(R.id.blurbg);
@@ -109,8 +112,7 @@ public class HelloTherePage extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             Toast.makeText(HelloTherePage.this, "Redirecting To Your Firebase Account", Toast.LENGTH_SHORT).show();
-                            SignIn();
-                        }
+                            SignIn();}
                     });
                 }
             }
@@ -138,17 +140,21 @@ public class HelloTherePage extends AppCompatActivity {
                             .whereEqualTo("Email", Mail).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                    for (DocumentSnapshot doc : task.getResult()) {
-                                        if (!doc.contains("Houses")) {
-                                            Intent intent = new Intent(getApplicationContext(), Waiting_Room.class);
+                                    if (task.getResult().isEmpty()){
+                                        Log.i("ireliawashere","Hello-therePage");
+                                        Intent intent = new Intent(HelloTherePage.this, SignUpPage.class);
+                                        startActivity(intent);
+                                    }else{
+                                        if (!task.getResult().getDocuments().get(0).contains("Houses")) {
+                                            Log.i("ireliawashere","WaitingRoom");
+                                            Intent intent = new Intent(HelloTherePage.this, Waiting_Room.class);
                                             finish();
                                             startActivity(intent);
-                                        }else{
-                                            Intent intent = new Intent(getApplicationContext(), MainDashBoard.class);
+                                        }else if(task.getResult().getDocuments().get(0).contains("Houses")) {
+                                            Log.i("ireliawashere", "MainDash");
+                                            Intent intent = new Intent(HelloTherePage.this, MainDashBoard.class);
                                             finish();
                                             startActivity(intent);
-                                            //openDialog();
-
                                         }
                                     }
                                 }

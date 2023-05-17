@@ -28,11 +28,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.squareup.picasso.Picasso;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class MainDashBoard extends AppCompatActivity {
@@ -42,6 +38,8 @@ public class MainDashBoard extends AppCompatActivity {
     TextView Username;
     ImageView appCompatImageView;
     ArrayList<String> user_data= new ArrayList<String>();
+    ArrayList<String> user_houses= new ArrayList<String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +52,9 @@ public class MainDashBoard extends AppCompatActivity {
         Bundle data=new Bundle();
 
         //Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.home);
-
+        SignIn();
+        data.putStringArrayList("user_data",user_data);
+        data.putStringArrayList("user_houses",user_houses);
 
         //appCompatImageView = fragment.getView().findViewById(R.id.appCompatImageView);
         //Username.setText(SignIn());
@@ -81,9 +81,12 @@ public class MainDashBoard extends AppCompatActivity {
                         {
 
                             HomeFragment myHomeFragment = new HomeFragment();
-                            data.putStringArrayList("info",user_data);
-                            replaceFragment(new HomeFragment(),false);
-                            SignIn();
+                            myHomeFragment.setArguments(data);
+                            FragmentManager fragmentManager = getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.frame_layout, myHomeFragment).commit();
+                            //replaceFragment(new HomeFragment(),false);
+
                             //openDialog();
 
                         }
@@ -114,6 +117,16 @@ public class MainDashBoard extends AppCompatActivity {
 
                         }
                         break;
+                    default:
+                        HomeFragment myHomeFragment = new HomeFragment();
+
+                        myHomeFragment.setArguments(data);
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.frame_layout, myHomeFragment).commit();
+                        //replaceFragment(new HomeFragment(),false);
+                        break;
+
                 }
                 return true;
             }
@@ -159,13 +172,20 @@ public class MainDashBoard extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
                                     for (DocumentSnapshot doc : task.getResult()) {
+                                        if (!doc.exists()) {
+                                            gsc.signOut();
+                                            Intent intent = new Intent(getApplicationContext(), HelloTherePage.class);
+                                            finish();
+                                            startActivity(intent);
+                                        }
                                         if (!doc.contains("Houses")) {
                                             Intent intent = new Intent(getApplicationContext(), Waiting_Room.class);
                                             finish();
                                             startActivity(intent);
                                         }else{
-//                                            for (ArrayList house : doc.get("Houses").) {
-//
+                                            user_houses= (ArrayList<String>) doc.get("Houses");
+//                                            for (String house : houses) {
+//                                                Log.i("MO3MO3AZEAZE",house.toString());
 //                                            }
 //                                            Log.i("MO3MO3AZEAZE",doc.get("Houses").toString());
                                             user_data.add(0,doc.get("Email").toString());                                            user_data.add(0,doc.get("Email").toString());
@@ -173,7 +193,13 @@ public class MainDashBoard extends AppCompatActivity {
                                             user_data.add(2,doc.get("Password").toString());
                                             user_data.add(3,doc.get("Phone").toString());
                                             user_data.add(4,doc.get("Username").toString());
-                                            user_data.add(5,doc.get("Houses").toString());
+                                            try {
+                                                user_data.add(5,account.getPhotoUrl().toString());
+                                            }catch (Exception e){
+                                                user_data.add(5,"No");
+                                            }
+
+//                                            user_data.add(5,doc.get("Houses").toString());
 
                                             //user_data.add(1,doc.getData().toString());
                                         }
