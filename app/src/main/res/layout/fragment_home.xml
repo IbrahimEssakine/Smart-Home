@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fcfcfc"
     tools:context=".HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,7 +14,7 @@
 
 
 
-        <com.google.android.material.imageview.ShapeableImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/appCompatImageView"
             android:layout_width="64dp"
             android:layout_height="64dp"
@@ -22,7 +23,6 @@
             android:background="@drawable/signup_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/roundedImageView"
             app:srcCompat="@drawable/user_image" />
 
         <TextView
@@ -73,28 +73,19 @@
             app:layout_constraintStart_toEndOf="@+id/UsernameTxt"
             app:layout_constraintTop_toTopOf="@+id/appCompatImageView" />
 
-        <com.google.android.material.textfield.TextInputLayout
 
-            android:id="@+id/button_menu"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="105dp"
-            android:layout_height="wrap_content"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/houses_button_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
             android:background="@drawable/back_arrow_background"
             android:drawableRight="@drawable/baseline_arrow_drop_down_24"
             android:fontFamily="@font/outfit_bold"
+            android:text="My Home"
             android:textAllCaps="false"
             android:textColor="@color/blue_main"
             app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView">
-
-            <AutoCompleteTextView
-                android:id="@+id/items"
-                android:layout_width="105dp"
-                android:layout_height="wrap_content"
-                android:hint="My Home"
-                android:inputType="none" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
 
 
 
@@ -191,6 +182,7 @@
 
 
             <HorizontalScrollView
+                android:id="@+id/horizontalscrollview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -198,6 +190,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2">
 
                 <LinearLayout
+                    android:id="@+id/RoomLinearLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -262,8 +255,15 @@
 
                 </LinearLayout>
 
-
             </HorizontalScrollView>
+
+            <FrameLayout
+                android:id="@+id/DeviceFrame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalscrollview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

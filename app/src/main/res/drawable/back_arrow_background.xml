@@ -2,7 +2,7 @@
 <inset xmlns:android="http://schemas.android.com/apk/res/android">
     <ripple android:color="#BCBCBC" >
         <item>
-            <shape android:shape="rectangle" android:tint="#FCFCFC">
+            <shape android:shape="rectangle" >
                 <corners android:radius="500dp" />
             </shape>
         </item>
