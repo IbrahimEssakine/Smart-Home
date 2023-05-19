@@ -35,7 +35,6 @@
         app:fabCradleRoundedCornerRadius="30dp"
         app:fabCradleVerticalOffset="0dp"
         app:hideOnScroll="true"
-
         app:backgroundTint="#292D61"
         >
 
@@ -47,7 +46,8 @@
             app:itemIconTint="@color/white"
             app:itemTextColor="@color/white"
             android:layout_marginRight="16dp"
-            app:menu="@menu/bottom_navigation_menu" />
+            app:menu="@menu/bottom_navigation_menu"
+            />
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

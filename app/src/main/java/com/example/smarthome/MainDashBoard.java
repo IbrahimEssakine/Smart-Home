@@ -18,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -33,34 +34,13 @@ import java.util.ArrayList;
 
 
 public class MainDashBoard extends AppCompatActivity {
-    GoogleSignInOptions gso;
-    GoogleSignInClient gsc;
-    FirebaseFirestore firestore;
-    TextView Username;
-    ImageView appCompatImageView;
-    ArrayList<String> user_data= new ArrayList<String>();
-    ArrayList<String> user_houses= new ArrayList<String>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        gso=new GoogleSignInOptions. Builder (GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        gsc = GoogleSignIn.getClient(this,gso);
+
         setContentView(R.layout.activity_main_dash_board_active);
-        Bundle data=new Bundle();
 
-        //Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.home);
-        SignIn();
-        data.putStringArrayList("user_data",user_data);
-        data.putStringArrayList("user_houses",user_houses);
-
-        //appCompatImageView = fragment.getView().findViewById(R.id.appCompatImageView);
-        //Username.setText(SignIn());
-
-        replaceFragment(new HomeFragment(),true);
         BottomNavigationView bottomNavigationView= findViewById(R.id.bottomNavigationView);
         FloatingActionButton floatingActionBar = findViewById(R.id.floatingactionbutton);
         floatingActionBar.setOnClickListener(new View.OnClickListener() {
@@ -69,40 +49,36 @@ public class MainDashBoard extends AppCompatActivity {
                 openDialog();
             }
         });
+
+        bottomNavigationView.setSelectedItemId(R.id.home);
+        HomeFragment myHomeFragment = new HomeFragment();
+        replaceFragment(new HomeFragment(),true);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                String iteq = item.getTitle().toString();
+                int iteq = item.getItemId();
+                Log.i("Syndra","item is : "+iteq);
                 item.setChecked(true);
                 Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.frame_layout);
-                Fragment ManFrag = getSupportFragmentManager().findFragmentById(R.id.manage);
                 switch (item.getItemId()) {
                     case R.id.home:
                         if (!(currentFragment instanceof HomeFragment))
                         {
-
                             HomeFragment myHomeFragment = new HomeFragment();
-                            myHomeFragment.setArguments(data);
-                            FragmentManager fragmentManager = getSupportFragmentManager();
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.frame_layout, myHomeFragment).commit();
-                            //replaceFragment(new HomeFragment(),false);
-
-                            //openDialog();
-
+                            replaceFragment(new HomeFragment(),false);
                         }
                         break;
                     case R.id.statistics:
+                        StatisticsFragment statisticsFragment = new StatisticsFragment();
                         if ( (currentFragment instanceof ManageFragment) || (currentFragment instanceof SettingsFragment))
                         {
-
                             replaceFragment(new StatisticsFragment(),false);
-
                         }else if (!(currentFragment instanceof StatisticsFragment)) {
                             replaceFragment(new StatisticsFragment(),true);
                         }
                         break;
                     case R.id.manage:
+                        ManageFragment manageFragment = new ManageFragment();
                         if ((currentFragment instanceof SettingsFragment))
                         {
                             replaceFragment(new ManageFragment(),false);
@@ -112,6 +88,7 @@ public class MainDashBoard extends AppCompatActivity {
                         }
                         break;
                     case R.id.settings:
+                        SettingsFragment settingsFragment = new SettingsFragment();
                         if (!(currentFragment instanceof SettingsFragment))
                         {
                             replaceFragment(new SettingsFragment(),true);
@@ -120,14 +97,8 @@ public class MainDashBoard extends AppCompatActivity {
                         break;
                     default:
                         HomeFragment myHomeFragment = new HomeFragment();
-
-                        myHomeFragment.setArguments(data);
-                        FragmentManager fragmentManager = getSupportFragmentManager();
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.frame_layout, myHomeFragment).commit();
-                        //replaceFragment(new HomeFragment(),false);
+                        replaceFragment(new HomeFragment(),false);
                         break;
-
                 }
                 return true;
             }
@@ -148,70 +119,6 @@ public class MainDashBoard extends AppCompatActivity {
         }
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
-    }
-    private void SignIn() {
-        Intent intent=gsc.getSignInIntent();
-        startActivityForResult(intent, 100);
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        String Mail = account.getEmail();
-
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult (requestCode, resultCode, data);
-        if (requestCode==100) {
-            Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                task.getResult (ApiException.class);
-                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-                if (account!=null) {
-                    String Mail = account.getEmail();
-                    firestore = FirebaseFirestore.getInstance();
-                    firestore.collection("user")
-                            .whereEqualTo("Email", Mail).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-
-                                    for (DocumentSnapshot doc : task.getResult()) {
-                                        if (!doc.exists()) {
-                                            gsc.signOut();
-                                            Intent intent = new Intent(getApplicationContext(), HelloTherePage.class);
-                                            finish();
-                                            startActivity(intent);
-                                        }
-                                        if (!doc.contains("Houses")) {
-                                            Intent intent = new Intent(getApplicationContext(), Waiting_Room.class);
-                                            finish();
-                                            startActivity(intent);
-                                        }else{
-                                            user_houses= (ArrayList<String>) doc.get("Houses");
-//                                            for (String house : houses) {
-//                                                Log.i("MO3MO3AZEAZE",house.toString());
-//                                            }
-//                                            Log.i("MO3MO3AZEAZE",doc.get("Houses").toString());
-                                            user_data.add(0,doc.get("Email").toString());                                            user_data.add(0,doc.get("Email").toString());
-                                            user_data.add(1,doc.get("ID").toString());
-                                            user_data.add(2,doc.get("Password").toString());
-                                            user_data.add(3,doc.get("Phone").toString());
-                                            user_data.add(4,doc.get("Username").toString());
-                                            try {
-                                                user_data.add(5,account.getPhotoUrl().toString());
-                                            }catch (Exception e){
-                                                user_data.add(5,"No");
-                                            }
-
-//                                            user_data.add(5,doc.get("Houses").toString());
-
-                                            //user_data.add(1,doc.getData().toString());
-                                        }
-                                    }
-                                }
-                            });
-                }
-            } catch (ApiException e) {
-                Toast.makeText( this, "Cnx Error", Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 
 }

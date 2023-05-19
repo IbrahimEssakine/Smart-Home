@@ -78,11 +78,10 @@
             android:id="@+id/button_menu"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="105dp"
-            android:layout_height="28dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/back_arrow_background"
             android:drawableRight="@drawable/baseline_arrow_drop_down_24"
             android:fontFamily="@font/outfit_bold"
-            android:hint="My Home"
             android:textAllCaps="false"
             android:textColor="@color/blue_main"
             app:layout_constraintStart_toStartOf="@+id/appCompatImageView"
@@ -91,7 +90,7 @@
             <AutoCompleteTextView
                 android:id="@+id/items"
                 android:layout_width="105dp"
-                android:layout_height="28dp"
+                android:layout_height="wrap_content"
                 android:hint="My Home"
                 android:inputType="none" />
 
