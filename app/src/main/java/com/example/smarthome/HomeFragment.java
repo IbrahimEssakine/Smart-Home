@@ -1,102 +1,154 @@
 package com.example.smarthome;
 
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.core.content.ContextCompat;
+import androidx.core.widget.ListPopupWindowCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import  androidx.fragment.app.FragmentActivity;
-
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import android.widget.ListPopupWindow;
 import android.widget.PopupMenu;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickListener {
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
 
-    AppCompatButton liviingroomButton;
-    AppCompatButton kitchenButton;
-    AppCompatButton bedroomButton;
-    AppCompatButton bathroomButton;
-    AppCompatButton changeshousesbutton;
+import java.util.ArrayList;
 
+public class HomeFragment extends Fragment {
+    ArrayList<String> dataOfuser = new ArrayList<String>();
+    ArrayList<String> user_houses= new ArrayList<String>();
+    TextView Username,test;
+    GoogleSignInOptions gso;
+    GoogleSignInClient gsc;
+
+    FirebaseFirestore firestore;
+    ImageView userImage;
+    ArrayAdapter<String> adapterItems;
+    AutoCompleteTextView autoCompleteTextView;
+    TextInputLayout button_menu;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_home, container, false);
-        replaceFragment(new LivingRoomFragment());
+        gso=new GoogleSignInOptions. Builder (GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        gsc = GoogleSignIn.getClient(getContext().getApplicationContext(),gso);
+        Username=view.findViewById(R.id.UsernameTxt);
+        userImage=view.findViewById(R.id.appCompatImageView);
+        button_menu=view.findViewById(R.id.button_menu);
+        test=view.findViewById(R.id.DevicesTxt);
+        autoCompleteTextView = view.findViewById(R.id.items);
 
-        liviingroomButton = view.findViewById(R.id.button_1);
-        kitchenButton = view.findViewById(R.id.button_2);
-        bedroomButton    = view.findViewById(R.id.button_3);
-        bathroomButton = view.findViewById(R.id.button_4);
-        changeshousesbutton = view.findViewById(R.id.houses_button_menu);
-        changeshousesbutton.setOnClickListener(new View.OnClickListener() {
+        Toast.makeText(getActivity().getApplicationContext(), "in frag if", Toast.LENGTH_SHORT).show();
+
+
+        SignIn();
+        button_menu.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                PopupMenu popup = new PopupMenu(requireContext(), view, Gravity.END, 0, R.style.PopupMenuStyle);
-                popup.inflate(R.menu.houses_popup_menu);
+            public void onClick(View v) {
 
-                // Get the MenuItems from the PopupMenu
-                Menu menu = popup.getMenu();
-                for (int i = 0; i < menu.size(); i++) {
-                    MenuItem menuItem = menu.getItem(i);
-
-                    // Set the desired text color for the MenuItem
-                    SpannableString spannableString = new SpannableString(menuItem.getTitle());
-                    spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue_main)), 0, spannableString.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-                    menuItem.setTitle(spannableString);
+            }
+        });
+            autoCompleteTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+                    firestore.collection("House").document(user_houses.get(0).toString())
+                            .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    DocumentSnapshot document = task.getResult();
+                                    Toast.makeText(getContext().getApplicationContext(), "here your house name : " + document.get("Name"), Toast.LENGTH_SHORT).show();
+                                }
+                            });
                 }
-
-                popup.show();
-            }
-        });
-
-
-        liviingroomButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                replaceFragment(new LivingRoomFragment());
-            }
-        });
-        kitchenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                replaceFragment(new KitchenFragment());
-            }
-        });
-
+            });
 
         return view;
     }
-    private void replaceFragment(Fragment fragment ) {
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.DeviceFrame, fragment);
-        fragmentTransaction.commit();
+    private String SignIn() {
+        Intent intent=gsc.getSignInIntent();
+        startActivityForResult(intent, 100);
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext().getApplicationContext());
+        String Mail = account.getEmail();
+        return Mail;
     }
-
     @Override
-    public boolean onMenuItemClick(MenuItem menuItem) {
-//        Log.i("menutitle","menuTitle"+menuItem.getTitle());
-//        changeshousesbutton.setText(menuItem.getTitle());
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult (requestCode, resultCode, data);
+        if (requestCode==100) {
+            Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                task.getResult (ApiException.class);
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext().getApplicationContext());
+                if (account!=null) {
+                    String Mail = account.getEmail();
+                    firestore = FirebaseFirestore.getInstance();
+                    firestore.collection("user")
+                            .whereEqualTo("Email", Mail).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    for (DocumentSnapshot doc : task.getResult()) {
+                                        if(doc.exists()){
+                                            Log.i("Singed","in doc");
+                                            user_houses= (ArrayList<String>) doc.get("Houses");
 
-
-        return true;
+                                            dataOfuser.add(0,doc.get("Email").toString());
+                                            dataOfuser.add(1,doc.get("ID").toString());
+                                            dataOfuser.add(2,doc.get("Password").toString());
+                                            dataOfuser.add(3,doc.get("Phone").toString());
+                                            dataOfuser.add(4,doc.get("Username").toString());
+                                            Log.i("garen","in activity");
+                                            try {
+                                                dataOfuser.add(5,account.getPhotoUrl().toString());
+                                            }catch (Exception e){
+                                                dataOfuser.add(5,"No");
+                                            }
+                                        }
+                                        Log.i("KHALID","Doc Email : "+doc.get("Email").toString());
+                                        Username.setText(dataOfuser.get(4).toString());
+                                                if (dataOfuser.get(5) != "No") {
+                                                    Picasso.get().load(dataOfuser.get(5)).into(userImage);
+                                                } else {
+                                                    userImage.setImageResource(R.drawable.user_image);}
+                                    autoCompleteTextView.setText(user_houses.get(0).toString());
+                                    }
+                                }
+                            });
+                }
+            } catch (ApiException e) {
+                Toast.makeText( getContext().getApplicationContext(), "Cnx Error", Toast.LENGTH_SHORT).show();
+            }
+            adapterItems = new ArrayAdapter<>(getActivity().getApplicationContext(), R.layout.list_items, user_houses);
+            autoCompleteTextView.setAdapter(adapterItems);
+            Toast.makeText(getContext().getApplicationContext(), "after adding data", Toast.LENGTH_SHORT).show();
+        }
     }
-
 }

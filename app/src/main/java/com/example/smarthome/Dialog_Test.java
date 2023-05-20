@@ -1,8 +1,6 @@
 package com.example.smarthome;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -84,6 +82,7 @@ public class Dialog_Test extends AppCompatDialogFragment {
                 radiobutton1 = viewroot.findViewById(R.id.radio_button_1);
                 radiobutton2 = viewroot.findViewById(R.id.radio_button_2);
                 radioGroup = viewroot.findViewById(R.id.radioGroup);
+
 //                radioGroup.check(R.id.radio_button_2);
                 Log.i("mouad","checkedbutton :" + radioGroup.getCheckedRadioButtonId());
                 radioGroup.check((getDevicesList().get(i).getType() == 1) ? R.id.radio_button_1 : R.id.radio_button_2);
@@ -101,18 +100,9 @@ public class Dialog_Test extends AppCompatDialogFragment {
             public void onClick(DialogInterface dialog, int which) {
 
             }
-        }).setPositiveButton("Add", new DialogInterface.OnClickListener() {
+        }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                LivingRoomFragment livingRoomFragment = LivingRoomFragment.newInstance();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.setCustomAnimations(R.anim.slide_in_house_cards,R.anim.slide_in_house_cards);
-                transaction.add(R.id.DeviceContainer, livingRoomFragment);
-                transaction.commitNow();  // Use commitNow() for immediate fragment attachment
-
-// Call the AddDevice() method
-                livingRoomFragment.AddDevice();
 
             }
         });
