@@ -108,25 +108,25 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                     Log.i("ireliawashere","inside complete");
-                                        if (task.getResult().isEmpty()){
-                                            Log.i("ireliawashere","Hello-therePage");
-                                            gsc.signOut();
-                                            Intent intent = new Intent(MainActivity.this, HelloTherePage.class);
+                                    if (task.getResult().isEmpty()){
+                                        Log.i("ireliawashere","Hello-therePage");
+                                        gsc.signOut();
+                                        Intent intent = new Intent(MainActivity.this, HelloTherePage.class);
+                                        finish();
+                                        startActivity(intent);
+                                    }else{
+                                        if (!task.getResult().getDocuments().get(0).contains("Houses")) {
+                                            Log.i("ireliawashere","WaitingRoom");
+                                            Intent intent = new Intent(MainActivity.this, Waiting_Room.class);
                                             finish();
                                             startActivity(intent);
-                                        }else{
-                                            if (!task.getResult().getDocuments().get(0).contains("Houses")) {
-                                                Log.i("ireliawashere","WaitingRoom");
-                                                Intent intent = new Intent(MainActivity.this, Waiting_Room.class);
-                                                finish();
-                                                startActivity(intent);
-                                            }else if(task.getResult().getDocuments().get(0).contains("Houses")) {
-                                                Log.i("ireliawashere", "MainDash");
-                                                Intent intent = new Intent(MainActivity.this, MainDashBoard.class);
-                                                finish();
-                                                startActivity(intent);
-                                            }
+                                        }else if(task.getResult().getDocuments().get(0).contains("Houses")) {
+                                            Log.i("ireliawashere", "MainDash");
+                                            Intent intent = new Intent(MainActivity.this, MainDashBoard.class);
+                                            finish();
+                                            startActivity(intent);
                                         }
+                                    }
                                 }
                             });
                 }

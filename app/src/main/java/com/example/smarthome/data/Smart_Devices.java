@@ -6,7 +6,7 @@ public class Smart_Devices implements Serializable {
 
     private String name;
     private int ID;
-
+    private String description;
     public int getID() {
         return ID;
     }
@@ -20,7 +20,8 @@ public class Smart_Devices implements Serializable {
     public Smart_Devices() {
     }
 
-    public Smart_Devices(String name, String image, int type) {
+    public Smart_Devices(String name, String description, int type) {
+        this.description = description;
         this.name = name;
         this.type = type;
     }
@@ -41,4 +42,11 @@ public class Smart_Devices implements Serializable {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
