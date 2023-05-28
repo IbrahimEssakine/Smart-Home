@@ -79,7 +79,6 @@ public class CreateHousePage extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference HouseID) {
-
                         firestore.collection("user").document(User_ID).update("Houses", Arrays.asList(HouseID.getId()));
 
                         database = FirebaseDatabase.getInstance().getReference (HouseID.getId());
@@ -93,6 +92,7 @@ public class CreateHousePage extends AppCompatActivity {
                         HouseCreation.setBackgroundColor(Color.GRAY);
                         HouseCreation.setClickable(false);
                         Intent intent = new Intent(getApplicationContext(), MainDashBoard.class);
+                        intent.putExtra("FromMain",user_data_list);
                         finish();
                         startActivity(intent);
                     }

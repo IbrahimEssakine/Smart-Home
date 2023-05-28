@@ -51,7 +51,7 @@ public class HelloTherePage extends AppCompatActivity {
                 .requestEmail()
                 .build();
         gsc = GoogleSignIn.getClient(this,gso);
-            //SignIn();
+        //SignIn();
         ConstraintLayout bottomSheetLayout = findViewById(R.id.login_buttomsheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
         blurview = findViewById(R.id.blurbg);
@@ -76,7 +76,7 @@ public class HelloTherePage extends AppCompatActivity {
 
 
         });
-        
+
         // collapse bottom sheet when screen is clicked
 //        blurview.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -128,6 +128,7 @@ public class HelloTherePage extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult (requestCode, resultCode, data);
+        ArrayList<String> user_info =new ArrayList<>();
         if (requestCode==100) {
             Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
@@ -153,6 +154,11 @@ public class HelloTherePage extends AppCompatActivity {
                                         }else if(task.getResult().getDocuments().get(0).contains("Houses")) {
                                             Log.i("ireliawashere", "MainDash");
                                             Intent intent = new Intent(HelloTherePage.this, MainDashBoard.class);
+                                            user_info.add(0,account.getEmail());
+                                            user_info.add(1,task.getResult().getDocuments().get(0).get("Username").toString());
+                                            user_info.add(2,account.getPhotoUrl().toString());
+                                            intent.putExtra("FromMain",user_info);
+
                                             finish();
                                             startActivity(intent);
                                         }

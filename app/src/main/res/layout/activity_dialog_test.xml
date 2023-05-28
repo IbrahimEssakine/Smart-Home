@@ -95,6 +95,46 @@
                 android:textColor="@color/blue_main" />
 
         </RadioGroup>
+        <TextView
+            android:id="@+id/TypeTxt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:fontFamily="@font/outfit_medium"
+            android:letterSpacing="0"
+            android:text="Signal  :"
+            android:textColor="#1C4984"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="@+id/radioGroup2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/radioGroup2" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/TypeTxt2"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+
+            <RadioButton
+                android:id="@+id/radio_button_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Digital"
+                android:textColor="@color/blue_main" />
+
+            <RadioButton
+                android:id="@+id/radio_button_22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="42dp"
+                android:text="Analogic"
+                android:textColor="@color/blue_main" />
+
+        </RadioGroup>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/Port"
@@ -107,7 +147,7 @@
             app:boxStrokeColor="@color/blue_main"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup2"
             app:startIconDrawable="@drawable/baseline_link_24"
             app:startIconTint="@color/blue_main">
 

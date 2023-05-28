@@ -34,13 +34,12 @@ import java.util.ArrayList;
 
 
 public class MainDashBoard extends AppCompatActivity {
-
+    ArrayList<String> user_info = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main_dash_board_active);
-
+        user_info= getIntent().getStringArrayListExtra("FromMain");
         BottomNavigationView bottomNavigationView= findViewById(R.id.bottomNavigationView);
         FloatingActionButton floatingActionBar = findViewById(R.id.floatingactionbutton);
         floatingActionBar.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +50,6 @@ public class MainDashBoard extends AppCompatActivity {
         });
 
         bottomNavigationView.setSelectedItemId(R.id.home);
-        HomeFragment myHomeFragment = new HomeFragment();
         replaceFragment(new HomeFragment(),true);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -62,14 +60,17 @@ public class MainDashBoard extends AppCompatActivity {
                 Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.frame_layout);
                 switch (item.getItemId()) {
                     case R.id.home:
+                        floatingActionBar.setVisibility(View.VISIBLE);
                         if (!(currentFragment instanceof HomeFragment))
                         {
                             HomeFragment myHomeFragment = new HomeFragment();
                             replaceFragment(new HomeFragment(),false);
+
                         }
                         break;
                     case R.id.statistics:
                         StatisticsFragment statisticsFragment = new StatisticsFragment();
+                        floatingActionBar.setVisibility(View.INVISIBLE);
                         if ( (currentFragment instanceof ManageFragment) || (currentFragment instanceof SettingsFragment))
                         {
                             replaceFragment(new StatisticsFragment(),false);
@@ -79,6 +80,7 @@ public class MainDashBoard extends AppCompatActivity {
                         break;
                     case R.id.manage:
                         ManageFragment manageFragment = new ManageFragment();
+                        floatingActionBar.setVisibility(View.INVISIBLE);
                         if ((currentFragment instanceof SettingsFragment))
                         {
                             replaceFragment(new ManageFragment(),false);
@@ -88,7 +90,10 @@ public class MainDashBoard extends AppCompatActivity {
                         }
                         break;
                     case R.id.settings:
+
                         SettingsFragment settingsFragment = new SettingsFragment();
+                        floatingActionBar.setVisibility(View.INVISIBLE);
+
                         if (!(currentFragment instanceof SettingsFragment))
                         {
                             replaceFragment(new SettingsFragment(),true);
@@ -97,6 +102,8 @@ public class MainDashBoard extends AppCompatActivity {
                         break;
                     default:
                         HomeFragment myHomeFragment = new HomeFragment();
+                        floatingActionBar.setVisibility(View.VISIBLE);
+
                         replaceFragment(new HomeFragment(),false);
                         break;
                 }
@@ -111,6 +118,12 @@ public class MainDashBoard extends AppCompatActivity {
     private void replaceFragment(Fragment fragment , boolean trans ) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Bundle bundle = new Bundle();
+
+        Log.i("heroMe","youuuuu");
+        Log.i("heroMe","  you "+ user_info.get(1));
+        bundle.putStringArrayList("user_info",user_info);
+        fragment.setArguments(bundle);
         if(trans)
         {
             fragmentTransaction.setCustomAnimations(R.anim.silde_in_right,R.anim.slide_out_left);

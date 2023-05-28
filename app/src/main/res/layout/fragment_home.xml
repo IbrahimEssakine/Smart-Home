@@ -94,6 +94,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/frame2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="110dp"
@@ -196,79 +197,87 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:paddingBottom="8dp">
-
-                    <androidx.appcompat.widget.AppCompatButton
+                <RadioGroup
+                    android:id="@+id/radioRoom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:checkedButton="@id/button_1"
+                    >
+                    <androidx.appcompat.widget.AppCompatRadioButton
                         android:id="@+id/button_1"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_marginLeft="12dp"
-                        android:background="@drawable/back_arrow_background"
-                        android:backgroundTint="@color/blue_main"
-                        android:fontFamily="@font/outfit_bold"
+                        android:background="@drawable/state"
+                        android:fontFamily="@font/outfit_medium"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
-                        android:text="Living Room (4)"
-                        android:textAllCaps="false"
-                        android:textColor="@color/gray_bg" />
+                        android:text="Living Room"
+                        android:button="@null"
+                        android:textAllCaps="false"/>
 
-                    <androidx.appcompat.widget.AppCompatButton
+                    <androidx.appcompat.widget.AppCompatRadioButton
                         android:id="@+id/button_2"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
                         android:layout_marginLeft="12dp"
-                        android:background="@drawable/back_arrow_background"
-                        android:backgroundTint="#e3e3e3"
+                        android:background="@drawable/state"
                         android:fontFamily="@font/outfit_medium"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
                         android:text="Kitchen"
                         android:textAllCaps="false"
-                        android:textColor="@color/black" />
+                        android:button="@null"
+                        />
 
-                    <androidx.appcompat.widget.AppCompatButton
+                    <androidx.appcompat.widget.AppCompatRadioButton
                         android:id="@+id/button_3"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
                         android:layout_marginLeft="12dp"
-                        android:background="@drawable/back_arrow_background"
-                        android:backgroundTint="#e3e3e3"
+                        android:background="@drawable/state"
                         android:fontFamily="@font/outfit_medium"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
+                        android:button="@null"
                         android:text="Bedroom"
-                        android:textAllCaps="false"
-                        android:textColor="@color/black" />
+                        android:textAllCaps="false" />
 
-                    <androidx.appcompat.widget.AppCompatButton
+                    <androidx.appcompat.widget.AppCompatRadioButton
                         android:id="@+id/button_4"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
                         android:layout_marginLeft="12dp"
-                        android:background="@drawable/back_arrow_background"
-                        android:backgroundTint="#e3e3e3"
+                        android:background="@drawable/state"
                         android:fontFamily="@font/outfit_medium"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
+                        android:button="@null"
                         android:text="Bathroom"
-                        android:textAllCaps="false"
-                        android:textColor="@color/black" />
-
+                        android:textAllCaps="false" />
+                </RadioGroup>
 
                 </LinearLayout>
 
             </HorizontalScrollView>
 
-            <FrameLayout
-                android:id="@+id/DeviceFrame"
+<!--            <FrameLayout-->
+<!--                android:id="@+id/DeviceFrame"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/horizontalscrollview"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent" />-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/DeviceContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/horizontalscrollview"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalscrollview" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </androidx.core.widget.NestedScrollView>
+
 
 </FrameLayout>

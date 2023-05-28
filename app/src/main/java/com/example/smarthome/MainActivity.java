@@ -3,6 +3,8 @@ package com.example.smarthome;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.accounts.Account;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +26,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.checkerframework.framework.qual.FromByteCode;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
 
@@ -33,14 +40,15 @@ public class MainActivity extends AppCompatActivity {
     GoogleSignInClient gsc;
     FirebaseFirestore firestore;
     Pair[]pairs=new Pair[1];
+    Intent intent;
 
     GoogleSignInAccount account;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        super.onCreate(savedInstanceState);
+        ArrayList<String> user_info =new ArrayList<>();
+        super.onCreate(savedInstanceState); 
         gso=new GoogleSignInOptions. Builder (GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -49,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         GifImageView gif = findViewById(R.id.LogoGif);
         ((GifDrawable)gif.getDrawable()).stop();
-        account = GoogleSignIn.getLastSignedInAccount(MainActivity.this);
 
         new Handler().postDelayed(new Runnable()
         {
@@ -67,9 +74,40 @@ public class MainActivity extends AppCompatActivity {
 
 //                        pairs[1]=new Pair<View, String>(logo,"logo_text");
                         //wrap the call in API level 21 or higher
+                        account = GoogleSignIn.getLastSignedInAccount(MainActivity.this);
+
                         if(android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.LOLLIPOP & account!=null)
                         {
-                            SignIn();
+                            Log.i("ireliawashere"," acc exist");
+                            Log.i("ireliawashere",account.getDisplayName());
+                            if (account!=null) {
+                                String Mail = account.getEmail();
+                                firestore = FirebaseFirestore.getInstance();
+                                firestore.collection("user")
+                                        .whereEqualTo("Email", Mail).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                Log.i("ireliawashere","inside complete");
+                                                    if (!task.getResult().getDocuments().get(0).contains("Houses")) {
+                                                        Log.i("ireliawashere","WaitingRoom");
+                                                        finish();
+                                                        Intent intent = new Intent(MainActivity.this, Waiting_Room.class);
+                                                        startActivity(intent);
+                                                    }else if(task.getResult().getDocuments().get(0).contains("Houses")) {
+                                                        Log.i("ireliawashere", "MainDash");
+                                                        finish();
+                                                        Intent intent = new Intent(MainActivity.this, MainDashBoard.class);
+                                                        user_info.add(0,account.getEmail());
+                                                        user_info.add(1,task.getResult().getDocuments().get(0).get("Username").toString());
+                                                        if(account.getPhotoUrl()!=null){
+                                                            user_info.add(2,account.getPhotoUrl().toString());
+                                                        }
+                                                        intent.putExtra("FromMain",user_info);
+                                                        startActivity(intent);
+                                                    }
+                                            }
+                                        });
+                            }
                         }else{
                             Log.i("MOKAI","HELLO THERE");
                             Intent intent = new Intent(MainActivity.this, HelloTherePage.class);
@@ -81,58 +119,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 2500);
 
-    }
-
-    private void SignIn() {
-        Intent intent=gsc.getSignInIntent();
-        startActivityForResult(intent, 100);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult (requestCode, resultCode, data);
-        if (requestCode==100) {
-            Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                task.getResult (ApiException.class);
-                account = GoogleSignIn.getLastSignedInAccount(this);
-                Log.i("ireliawashere"," acc exist");
-                Log.i("ireliawashere",account.getDisplayName());
-
-
-                if (account!=null) {
-                    String Mail = account.getEmail();
-                    firestore = FirebaseFirestore.getInstance();
-                    firestore.collection("user")
-                            .whereEqualTo("Email", Mail).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                    Log.i("ireliawashere","inside complete");
-                                    if (task.getResult().isEmpty()){
-                                        Log.i("ireliawashere","Hello-therePage");
-                                        gsc.signOut();
-                                        Intent intent = new Intent(MainActivity.this, HelloTherePage.class);
-                                        finish();
-                                        startActivity(intent);
-                                    }else{
-                                        if (!task.getResult().getDocuments().get(0).contains("Houses")) {
-                                            Log.i("ireliawashere","WaitingRoom");
-                                            Intent intent = new Intent(MainActivity.this, Waiting_Room.class);
-                                            finish();
-                                            startActivity(intent);
-                                        }else if(task.getResult().getDocuments().get(0).contains("Houses")) {
-                                            Log.i("ireliawashere", "MainDash");
-                                            Intent intent = new Intent(MainActivity.this, MainDashBoard.class);
-                                            finish();
-                                            startActivity(intent);
-                                        }
-                                    }
-                                }
-                            });
-                }
-            } catch (ApiException e) {
-                Toast.makeText( this, "Cnx Error", Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 }

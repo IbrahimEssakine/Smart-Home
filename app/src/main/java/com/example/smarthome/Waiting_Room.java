@@ -38,9 +38,8 @@ public class Waiting_Room extends AppCompatActivity {
         AppCompatButton buttonSignOut,CreateHouse;
          FirebaseFirestore firestore;
          AppCompatButton back;
-    ImageView userImage;
+        ImageView userImage;
         ArrayList<String> data_user_list=new ArrayList<>();
-        ArrayList<Boolean> login=new ArrayList<>();
         @Override
         protected void onCreate(Bundle savedInstanceState) {
 
@@ -57,7 +56,6 @@ public class Waiting_Room extends AppCompatActivity {
             userImage=findViewById(R.id.ImageAcc);
             EmailTxt.setText(SignIn());
 
-            data_user_list.add(0,EmailTxt.getText().toString());
             buttonSignOut.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -72,7 +70,9 @@ public class Waiting_Room extends AppCompatActivity {
             CreateHouse.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Intent intent=new Intent(getApplicationContext(), CreateHousePage.class);
+                    Log.i("GGEZ"," : "+data_user_list.get(1));
                     intent.putExtra("UserDataListChange",data_user_list);
                     finish();
                     startActivity (intent);
@@ -108,12 +108,18 @@ public class Waiting_Room extends AppCompatActivity {
                             .whereEqualTo("Email", Mail).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                  @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
                                     for (DocumentSnapshot doc : task.getResult()) {
                                         Log.i("MO3MO3AZEAZE","inside complete");
-
+                                        data_user_list.add(0,account.getEmail());
+                                        data_user_list.add(1,doc.get("Username").toString());
+                                        if(account.getPhotoUrl()!=null){
+                                            data_user_list.add(2,account.getPhotoUrl().toString());
+                                        }
                                         if (doc.contains("Houses")) {
                                             Log.i("MO3MO3AZEAZE","inside no house");
                                             Intent intent = new Intent(getApplicationContext(), MainDashBoard.class);
+                                            intent.putExtra("FromMain",data_user_list);
                                             finish();
                                             startActivity(intent);
                                         }
