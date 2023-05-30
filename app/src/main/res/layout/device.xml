@@ -2,11 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="150dp"
+    android:layout_height="250dp"
     android:background="@drawable/rounded_white_bg"
-    android:padding="10dp"
-    >
+    android:padding="10dp">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/threedots"
@@ -24,9 +23,9 @@
         android:layout_width="58dp"
         android:layout_height="58dp"
         android:src="@drawable/icon"
-        app:tint="@color/gray_null"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/gray_null" />
 
     <TextView
         android:id="@+id/textView"
@@ -36,7 +35,7 @@
         android:fontFamily="@font/outfit_semibold"
         android:text="SmartLamp"
         android:textColor="@color/gray_null"
-        android:textSize="28dp"
+        android:textSize="22dp"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -46,15 +45,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
-        android:textColor="#c1c1c1"
+        android:drawableLeft="@drawable/baseline_circle_24"
+        android:drawablePadding="6dp"
         android:drawableTint="#c1c1c1"
         android:fontFamily="@font/outfit_medium"
         android:text="Esp32 colorful lamp"
+        android:textColor="#c1c1c1"
         android:textSize="12dp"
-        android:drawableLeft="@drawable/baseline_circle_24"
-        android:drawablePadding="6dp"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/State"
         android:layout_width="wrap_content"

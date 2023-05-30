@@ -111,16 +111,7 @@ public class Dialog_Test extends AppCompatDialogFragment {
         }).setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-//                int radio1=(data_devices.get(item_id).getType() == 1) ? 1 :0;
-//                int radio2=(data_devices.get(item_id).getSignal() == 1) ? 1 :0;
-//                LivingRoomFragment livingRoomFragment = LivingRoomFragment.newInstance();
-//                FragmentManager fragmentManager = getFragmentManager();
-//                FragmentTransaction transaction = fragmentManager.beginTransaction();
-//                transaction.setCustomAnimations(R.anim.slide_in_house_cards, R.anim.slide_in_house_cards);
-//                transaction.add(R.id.DeviceContainer, livingRoomFragment);
-//                transaction.commitNow();  // Use commitNow() for immediate fragment attachment
 
-// Call the AddDevice() method
                 Smart_Devices smart_device;
                 if(item_id!=5) {
                     smart_device = data_devices.get(item_id);
@@ -130,13 +121,6 @@ public class Dialog_Test extends AppCompatDialogFragment {
                 smart_device.setPort(Integer.parseInt(Port.getEditText().getText().toString()));
                 smart_device.setDescription(Description.getEditText().getText().toString());
                 smart_device.setIcon(data_devices.get(item_id).getIcon());
-
-//                smart_device.setName(autoCompleteTextView.getText().toString());
-//                smart_device.setID(item_id);
-//                smart_device.setDescription(Description.getEditText().getText().toString());
-//                smart_device.setType((radioButton12.isChecked() == true) ? 1 :0);
-//                smart_device.setSignal((radioButton1.isChecked() == true) ? 1 :0);
-//                smart_device.setPort(Integer.parseInt(Port.getEditText().getText().toString()));
 
                 HomeFragment.addToFirebase(smart_device);
             }

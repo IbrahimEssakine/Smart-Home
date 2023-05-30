@@ -1,10 +1,10 @@
 package com.example.smarthome;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatRadioButton;
@@ -24,7 +24,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupMenu;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,8 +42,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickListener {
     ArrayList<String> dataOfuser = new ArrayList<String>();
@@ -54,8 +51,9 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
     PopupMenu popup;
     AppCompatImageView userImage;
     ArrayList<String> rooms = new ArrayList<>();
-    int checkRoom=1;
+    int checkRoom=0;
     TextView Username;
+    String House = "";
     static RecyclerView DeviceContainer;
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
@@ -65,7 +63,7 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
     static RadioGroup radioGroup ;
     static AppCompatButton changeshousesbutton;
     ArrayList<String> user_info = new ArrayList<>();
-    Map<String,ArrayList<Smart_Devices>> smart_devicesMap = new HashMap<>();
+    //Map<String,ArrayList<Smart_Devices>> smart_devicesMap = new HashMap<>();
     Bundle bundle=new Bundle();
 
     @Override
@@ -93,40 +91,7 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
         layoutManager = new GridLayoutManager(getContext().getApplicationContext(),2);
         DeviceContainer.setLayoutManager(layoutManager);
         DeviceContainer.setHasFixedSize(true);
-
-        database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("hjhjh");
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                smart_devicesMap.clear();
-                for (String room:rooms) {
-                    smart_devicesArrayLis=new ArrayList<Smart_Devices>();
-
-                    if (snapshot.child(room).exists()) {
-                        Log.i("omar", room);
-                        int i = 0;
-                        for (DataSnapshot dataSnapshot : snapshot.child(room).getChildren()) {
-
-                            Smart_Devices smart_device = dataSnapshot.getValue(Smart_Devices.class);
-                            Log.i("omar"," smart : "+ smart_device.getName());
-                            smart_devicesArrayLis.add(i, smart_device);
-                            i++;
-                            Log.i("omaro"," array : "+smart_devicesArrayLis.get(0).getName());
-
-                        }
-                    }
-                    smart_devicesMap.put(room, smart_devicesArrayLis);
-                }
-                DeviceContainer.setAdapter(recyclerViewAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
+        DeviceContainer.setPadding(6,6,6,6);
         firestore = FirebaseFirestore.getInstance();
         firestore.collection("user")
                 .whereEqualTo("Email", user_info.get(0)).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -137,7 +102,8 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
                                 user_houses= (ArrayList<String>) doc.get("Houses");
                                 if(user_houses!=null){
                                     changeshousesbutton.setText(user_houses.get(0).toString());
-//                                        replaceFragment(new LivingRoomFragment());
+                                    House = user_houses.get(0);
+                                    Refrech(checkRoom);
                                 }
                                 dataOfuser.add(0,doc.get("Email").toString());
                                 dataOfuser.add(1,doc.get("ID").toString());
@@ -154,7 +120,31 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
                     }
                 });
 
-
+//        database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("Mx2Knn4Kb9lpnCTvErBV");
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                smart_devicesArrayLis=new ArrayList<Smart_Devices>();
+//                if (snapshot.child(rooms.get(checkRoom)).exists()) {
+//                    Log.i("omar", rooms.get(checkRoom));
+//                    int i = 0;
+//                    for (DataSnapshot dataSnapshot : snapshot.child(rooms.get(checkRoom)).getChildren()) {
+//
+//                        Smart_Devices smart_device = dataSnapshot.getValue(Smart_Devices.class);
+//                        smart_devicesArrayLis.add(i, smart_device);
+//                        i++;
+//
+//                    }
+//                }
+//                recyclerViewAdapter = new RecyclerViewAdapter(smart_devicesArrayLis);
+//                DeviceContainer.setAdapter(recyclerViewAdapter);
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
 
         popup = new PopupMenu(requireContext(), view, Gravity.END, 0, R.style.PopupMenuStyle);
         popup.inflate(R.menu.houses_popup_menu);
@@ -168,16 +158,22 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
                     popup.getMenu().add(1, 1, 1, user_houses.get(i).toString());
                 }
 
-                // Get the MenuItems from the PopupMenu
                 Menu menu = popup.getMenu();
                 for (int i = 0; i < menu.size(); i++) {
                     MenuItem menuItem = menu.getItem(i);
-                    // Set the desired text color for the MenuItem
                     SpannableString spannableString = new SpannableString(menuItem.getTitle());
                     spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.blue_main)), 0, spannableString.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                     menuItem.setTitle(spannableString);
                 }
                 popup.show();
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        changeshousesbutton.setText(item.getTitle());
+                        Refrech(checkRoom);
+                        return false;
+                    }
+                });
             }
         });
 
@@ -190,83 +186,41 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
             }
         });
 
-
-        liviingroomButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-//                replaceFragment(new LivingRoomFragment());
-            }
-        });
-        kitchenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                replaceFragment(new KitchenFragment());
-            }
-        });
-
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 Toast.makeText(getContext(), "you pressed on : "+checkedId , Toast.LENGTH_SHORT).show();
                 checkedButton =  view.findViewById(checkedId);
-                checkedButton.setTextColor(Color.parseColor("#FFFFFFFF"));
                 switch (checkedId){
                     case R.id.button_1:
-                        try{
-                            recyclerViewAdapter = new RecyclerViewAdapter(smart_devicesMap.get("LivingRoom"));
-                            DeviceContainer.setAdapter(recyclerViewAdapter);
-                            Toast.makeText(getContext(), "No LivingRoom "+smart_devicesMap.get("LivingRoom").size(), Toast.LENGTH_SHORT).show();
-                        }catch (Exception e){
-                            Toast.makeText(getContext(), "LivingRoom", Toast.LENGTH_SHORT).show();
-                        }
+                        checkRoom = 0;
+                        Refrech(0);
                         break;
                     case R.id.button_2:
-                        try{
-                            Log.i("omarr","here a");
-                            recyclerViewAdapter = new RecyclerViewAdapter(smart_devicesMap.get("Kitchen"));
-                            DeviceContainer.setAdapter(recyclerViewAdapter);
-
-
-                        }catch (Exception e){
-                            Toast.makeText(getContext(), "Kitchen", Toast.LENGTH_SHORT).show();
-                        }
+                        checkRoom = 1;
+                        Refrech(1);
                         break;
                     case R.id.button_3:
-                        try{
-                            recyclerViewAdapter = new RecyclerViewAdapter(smart_devicesMap.get("BedRoom"));
-                            DeviceContainer.setAdapter(recyclerViewAdapter);
-
-                        }catch (Exception e){
-                            Toast.makeText(getContext(), "BedRoom", Toast.LENGTH_SHORT).show();
-                        }
+                        checkRoom = 2;
+                        Refrech(2);
                         break;
                     case R.id.button_4:
-                        try{
-                            recyclerViewAdapter = new RecyclerViewAdapter(smart_devicesMap.get("BathRoom"));
-                            DeviceContainer.setAdapter(recyclerViewAdapter);
-
-                        }catch (Exception e){
-                            Toast.makeText(getContext(), "BathRoom", Toast.LENGTH_SHORT).show();
-                        }
+                        checkRoom = 3;
+                        Refrech(3);
                         break;
                 }
             }
         });
 
-//        DeviceContainer
         return view;
     }
 
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
         changeshousesbutton.setText(menuItem.getTitle());
-
+        Log.i("ionia", "in clicked");
         return true;
     }
-//    static void Refresh(){
-//
-//    }
 
     public static void addToFirebase(Smart_Devices smart_device){
         database=FirebaseDatabase.getInstance();
@@ -284,11 +238,63 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
                 database.getReference(changeshousesbutton.getText().toString()).child("BathRoom").child(String.valueOf(smart_device.getPort())).setValue(smart_device);
                 break;
         }
-
-//        DatabaseReference myRef = database.getReference(changeshousesbutton.getText().toString());
-//        myRef.child("LivingRoom").child(String.valueOf(smart_device.getPort())).setValue(smart_device);
-//        Refresh();
     }
+    public static void removeFromFirebase(Smart_Devices smart_device) {
+        database=FirebaseDatabase.getInstance();
+        switch (radioGroup.getCheckedRadioButtonId()){
+            case R.id.button_1:
+                database.getReference(changeshousesbutton.getText().toString()).child("LivingRoom").child(String.valueOf(smart_device.getPort())).removeValue(new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                    }
+                });
+                break;
+            case R.id.button_2:
+                database.getReference(changeshousesbutton.getText().toString()).child("Kitchen").child(String.valueOf(smart_device.getPort())).removeValue(new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                    }
+                });
+                break;
+            case R.id.button_3:
+                database.getReference(changeshousesbutton.getText().toString()).child("BedRoom").child(String.valueOf(smart_device.getPort())).removeValue(new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                    }
+                });
+                break;
+            case R.id.button_4:
+                database.getReference(changeshousesbutton.getText().toString()).child("BathRoom").child(String.valueOf(smart_device.getPort())).removeValue(new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                    }
+                });
+                break;
 
+        }    }
+    void Refrech(int checkRoom){
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(changeshousesbutton.getText().toString());
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    smart_devicesArrayLis=new ArrayList<Smart_Devices>();
+                    if (snapshot.child(rooms.get(checkRoom)).exists()) {
+                        int i = 0;
+                        for (DataSnapshot dataSnapshot : snapshot.child(rooms.get(checkRoom)).getChildren()) {
+                            Smart_Devices smart_device = dataSnapshot.getValue(Smart_Devices.class);
+                            smart_devicesArrayLis.add(i, smart_device);
+                            i++;
+                        }
+                    }
+                recyclerViewAdapter = new RecyclerViewAdapter(smart_devicesArrayLis);
+                DeviceContainer.setAdapter(recyclerViewAdapter);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 }
