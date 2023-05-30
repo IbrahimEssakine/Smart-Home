@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
     PopupMenu popup;
     AppCompatImageView userImage;
     ArrayList<String> rooms = new ArrayList<>();
-
+    int checkRoom=1;
     TextView Username;
     static RecyclerView DeviceContainer;
     RecyclerView.LayoutManager layoutManager;
@@ -253,8 +253,6 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
                 }
             }
         });
-        if(smart_devicesMap.get("LivingRoom")!=null){
-        recyclerViewAdapter = new RecyclerViewAdapter(smart_devicesMap.get("LivingRoom"));}
 
 //        DeviceContainer
         return view;
@@ -291,5 +289,6 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
 //        myRef.child("LivingRoom").child(String.valueOf(smart_device.getPort())).setValue(smart_device);
 //        Refresh();
     }
+
 
 }
