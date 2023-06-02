@@ -106,7 +106,7 @@ public class Dialog_Test extends AppCompatDialogFragment {
         builder.setView(view).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                dialog.dismiss();
             }
         }).setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override

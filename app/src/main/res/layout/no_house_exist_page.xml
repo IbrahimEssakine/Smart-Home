@@ -134,6 +134,7 @@
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/continuewith_background"
                 android:backgroundTint="#1C4984"
+                android:clickable="true"
                 android:drawableLeft="@drawable/baseline_add_home_24"
                 android:drawableTint="#fff"
                 android:fontFamily="@font/outfit_medium"

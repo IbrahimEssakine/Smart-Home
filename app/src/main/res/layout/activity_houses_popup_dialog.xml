@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="360dp"
+    android:layout_height="wrap_content"
+    android:backgroundTint="#FFFFFF"
+    android:padding="12dp"
+    android:minHeight="300dp"
+    android:maxHeight="400dp"
+    tools:context=".Houses_Popup_Dialog">
+
+    <TextView
+        android:id="@+id/configtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/outfit_medium"
+        android:letterSpacing="0"
+        android:text="Choose A WorkSpace :"
+        android:textColor="@color/blue_main"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <GridView
+        android:id="@+id/gridView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="4dp"
+        android:layout_weight="1"
+        android:background="#e3e3e3"
+        android:clickable="true"
+        android:divider="@drawable/divider"
+        android:dividerHeight="1dp"
+        android:horizontalSpacing="1dp"
+        android:numColumns="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/configtxt" />
+
+
+            <!--            <androidx.appcompat.widget.AppCompatRadioButton-->
+            <!--                android:id="@+id/button_1"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="40dp"-->
+            <!--                android:layout_marginBottom="12dp"-->
+            <!--                android:background="@drawable/state"-->
+            <!--                android:button="@null"-->
+            <!--                android:fontFamily="@font/outfit_medium"-->
+            <!--                android:paddingLeft="20dp"-->
+            <!--                android:paddingRight="20dp"-->
+            <!--                android:text="Living Room"-->
+            <!--                android:textAllCaps="false"-->
+            <!--                android:textColor="@color/radio_button_text_colors" />-->
+
+            <!--            <androidx.appcompat.widget.AppCompatRadioButton-->
+            <!--                android:id="@+id/button_2"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="40dp"-->
+            <!--                android:layout_marginBottom="12dp"-->
+            <!--                android:background="@drawable/state"-->
+            <!--                android:button="@null"-->
+            <!--                android:fontFamily="@font/outfit_medium"-->
+            <!--                android:paddingLeft="20dp"-->
+            <!--                android:paddingRight="20dp"-->
+            <!--                android:text="Kitchen"-->
+            <!--                android:textAllCaps="false"-->
+            <!--                android:textColor="@color/radio_button_text_colors" />-->
+
+            <!--            <androidx.appcompat.widget.AppCompatRadioButton-->
+            <!--                android:id="@+id/button_3"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="40dp"-->
+            <!--                android:layout_marginBottom="12dp"-->
+            <!--                android:background="@drawable/state"-->
+            <!--                android:button="@null"-->
+            <!--                android:fontFamily="@font/outfit_medium"-->
+            <!--                android:paddingLeft="20dp"-->
+            <!--                android:paddingRight="20dp"-->
+            <!--                android:text="Bedroom"-->
+            <!--                android:textAllCaps="false"-->
+            <!--                android:textColor="@color/radio_button_text_colors" />-->
+
+            <!--            <androidx.appcompat.widget.AppCompatRadioButton-->
+            <!--                android:id="@+id/button_4"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="40dp"-->
+            <!--                android:layout_marginBottom="12dp"-->
+            <!--                android:background="@drawable/state"-->
+            <!--                android:button="@null"-->
+            <!--                android:fontFamily="@font/outfit_medium"-->
+            <!--                android:paddingLeft="20dp"-->
+            <!--                android:paddingRight="20dp"-->
+            <!--                android:text="Bathroom"-->
+            <!--                android:textAllCaps="false"-->
+            <!--                android:textColor="@color/radio_button_text_colors" />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

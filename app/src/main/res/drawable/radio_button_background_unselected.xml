@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <inset xmlns:android="http://schemas.android.com/apk/res/android">
-
     <ripple android:color="#BCBCBC">
-        <item android:height="40dp" android:gravity="center_vertical" >
-            <shape android:shape="rectangle" android:tint="@color/blue_main"  >
+        <item>
+            <shape android:shape="rectangle" android:tint="#e3e3e3"  >
                 <corners android:radius="500dp" />
-
             </shape>
         </item>
     </ripple>

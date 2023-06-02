@@ -172,6 +172,15 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
         DeviceContainer.setLayoutManager(layoutManager);
         DeviceContainer.setHasFixedSize(true);
         DeviceContainer.setPadding(6,6,6,6);
+
+        float density = getResources().getDisplayMetrics().density;
+        int spacingDp = 8; // Desired column margin in dp
+        int spacingPx = (int) (spacingDp * density); // Convert dp to pixels
+        DeviceContainer.setLayoutManager(layoutManager);
+
+        DeviceContainer.addItemDecoration(new GridSpacingItemDecoration(spacingPx));
+
+
         firestore = FirebaseFirestore.getInstance();
         firestore.collection("user")
                 .whereEqualTo("Email", user_info.get(0)).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

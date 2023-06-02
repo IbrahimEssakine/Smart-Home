@@ -1,6 +1,8 @@
 package com.example.smarthome;
 
+
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -11,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
@@ -20,6 +24,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smarthome.data.Smart_Devices;
@@ -43,11 +48,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        if(smart_devices.get(position).getState()==0){
-            holder.itemView.setBackgroundColor(Color.parseColor("#f15152"));
-        }else{
-            holder.itemView.setBackgroundColor(Color.parseColor("#a4df66"));
-        }
+//        if(smart_devices.get(position).getState()==0){
+//            holder.itemView.setBackgroundColor(Color.parseColor("#f15152"));
+//        }else{
+//            holder.itemView.setBackgroundColor(Color.parseColor("#a4df66"));
+//        }
 
         holder.textView.setText(smart_devices.get(position).getName());
         holder.Descreption.setText(smart_devices.get(position).getDescription());
@@ -62,6 +67,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.State.setVisibility(View.VISIBLE);
             holder.State.setChecked(smart_devices.get(position).getState()==1 ? true : false);
         }
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.slide_in_house_cards);
+        holder.itemView.startAnimation(animation);
+
     }
 
     @Override
@@ -78,6 +86,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ImageView icon;
         SwitchCompat State;
         AppCompatButton optiondots;
+
+        ConstraintLayout constraintLayout;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +107,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             Descreption=itemView.findViewById(R.id.Descreption);
             icon = itemView.findViewById(R.id.imageView);
             State=itemView.findViewById(R.id.State);
+
+            constraintLayout = itemView.findViewById(R.id.devicelayout);
+            constraintLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (view.isSelected()) {
+                        view.setSelected(false);
+                        view.getBackground().setColorFilter(null);
+                    } else {
+                        view.setSelected(true);
+                        view.getBackground().setColorFilter(Color.parseColor("#70bf73"), PorterDuff.Mode.SRC_ATOP);
+                    }
+                }
+            });
+
+
             optiondots = itemView.findViewById(R.id.threedots);
             optiondots.setOnClickListener(new View.OnClickListener() {
                 @Override

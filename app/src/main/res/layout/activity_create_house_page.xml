@@ -148,20 +148,20 @@
                 android:id="@+id/HouseCreation"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="42dp"
                 android:background="@drawable/button_next"
                 android:backgroundTint="#1C4984"
                 android:drawableRight="@drawable/baseline_arrow_right_24"
                 android:drawableTint="#fff"
                 android:fontFamily="@font/outfit_medium"
                 android:letterSpacing="0"
-                android:paddingRight="15dp"
                 android:paddingLeft="30dp"
+                android:paddingRight="15dp"
                 android:text="Continue"
                 android:textAllCaps="false"
                 android:textColor="#fff"
                 android:textSize="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/CancelCreateHouse"
                 app:layout_constraintTop_toTopOf="@+id/CancelCreateHouse" />
 
             <androidx.appcompat.widget.AppCompatButton

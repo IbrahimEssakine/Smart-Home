@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@android:color/transparent"
+    android:backgroundTint="#00FFFFFF"
 
     >
 
@@ -153,6 +153,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="260dp"
+                android:inputType="number"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/transparent"
                 android:textColor="#1C4984" />
@@ -181,5 +182,4 @@
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

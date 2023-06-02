@@ -20,11 +20,13 @@
         <item name="android:topRightRadius">15dp</item>
         <item name="android:bottomLeftRadius">15dp</item>
         <item name="android:bottomRightRadius">15dp</item>
+        <item name="colorAccent">@color/blue_main</item>
     </style>
 
     <style name="PopupMenuStyle" parent="@style/Widget.AppCompat.PopupMenu">
         <item name="android:popupBackground">@color/white</item>
     </style>
+
 
 
 </resources>
