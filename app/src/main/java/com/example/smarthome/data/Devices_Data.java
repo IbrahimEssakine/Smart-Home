@@ -21,7 +21,8 @@ public class Devices_Data {
         Led.setName("Led");
         Led.setType(0);
         Led.setSignal(0);
-        Led.setIcon(R.drawable.baseline_smartphone_24);
+        Led.setIconOff(R.drawable.outline_light_);
+        Led.setIconOn(R.drawable.device_11);
         devicesList.add(0,Led);
 
         Smart_Devices GazSensor = new Smart_Devices();
@@ -29,7 +30,7 @@ public class Devices_Data {
         GazSensor.setName("GazSensor");
         GazSensor.setSignal(1);
         GazSensor.setType(0);
-        GazSensor.setIcon(R.drawable.baseline_smartphone_24);
+        GazSensor.setIconOff(R.drawable.baseline_smartphone_24);
         devicesList.add(1,GazSensor);
 
         Smart_Devices SmokeSensor = new Smart_Devices();
@@ -37,7 +38,7 @@ public class Devices_Data {
         SmokeSensor.setName("SmokeSensor");
         SmokeSensor.setType(0);
         SmokeSensor.setSignal(1);
-        SmokeSensor.setIcon(R.drawable.baseline_smartphone_24);
+        SmokeSensor.setIconOff(R.drawable.baseline_smartphone_24);
         devicesList.add(2,SmokeSensor);
 
         Smart_Devices PresenceSensor = new Smart_Devices();
@@ -45,7 +46,7 @@ public class Devices_Data {
         PresenceSensor.setID(3);
         PresenceSensor.setType(0);
         PresenceSensor.setSignal(0);
-        PresenceSensor.setIcon(R.drawable.baseline_smartphone_24);
+        PresenceSensor.setIconOff(R.drawable.baseline_smartphone_24);
         devicesList.add(3,PresenceSensor);
 
         Smart_Devices ServoMotor = new Smart_Devices();
@@ -53,14 +54,14 @@ public class Devices_Data {
         ServoMotor.setName("ServoMotor");
         ServoMotor.setType(1);
         ServoMotor.setSignal(0);
-        ServoMotor.setIcon(R.drawable.baseline_smartphone_24);
+        ServoMotor.setIconOff(R.drawable.baseline_smartphone_24);
         devicesList.add(4,ServoMotor);
 
         Smart_Devices Other = new Smart_Devices();
         Other.setID(5);
         Other.setName("Other");
         Other.setType(3);
-        Other.setIcon(R.drawable.google_icon);
+        Other.setIconOff(R.drawable.google_icon);
         devicesList.add(5,Other);
         return devicesList;
     }

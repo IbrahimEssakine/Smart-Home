@@ -25,7 +25,7 @@
         android:src="@drawable/icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/gray_null" />
+/>
 
     <TextView
         android:id="@+id/textView"

@@ -8,7 +8,9 @@ public class Smart_Devices implements Serializable {
 
     private String name;
     private int ID;
-    private int icon;
+    private int iconOff;
+    private int iconOn;
+
     private String description;
     private int type;
     private int signal=3;
@@ -44,58 +46,43 @@ public class Smart_Devices implements Serializable {
         this.ID = ID;
     }
 
+    public int getIconOff() {return iconOff;}
 
+    public void setIconOff(int iconOff) {this.iconOff = iconOff;}
+
+    public int getIconOn() {return iconOn;}
+    public void setIconOn(int iconOn) {this.iconOn = iconOn;}
     public int getType() {
         return type;
     }
-
     public void setType(int type) {
         this.type = type;
     }
-
     public int getSignal() {
         return signal;
     }
-
-    public int getIcon() {
-        return icon;
-    }
-
-    public void setIcon(int icon) {
-        this.icon = icon;
-    }
-
     public void setSignal(int signal) {
         this.signal = signal;
     }
-
-    public int getState() {
-        return state;
-    }
-
+    public int getState() {return state;}
     public void setState(int state) {
         this.state = state;
     }
-
     public int getPort() {
         return port;
     }
-
     public void setPort(int port) {
         this.port = port;
     }
-
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
-
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }

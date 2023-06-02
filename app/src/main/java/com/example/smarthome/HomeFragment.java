@@ -1,6 +1,11 @@
 package com.example.smarthome;
 
 
+import android.app.Activity;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatRadioButton;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -28,8 +34,17 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.smarthome.data.Smart_Devices;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,30 +56,50 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickListener {
     ArrayList<String> dataOfuser = new ArrayList<String>();
     ArrayList<String> user_houses = new ArrayList<String>();
-//    Menu menu;
+    //    Menu menu;
     FirebaseFirestore firestore;
     PopupMenu popup;
     AppCompatImageView userImage;
-    ArrayList<String> rooms = new ArrayList<>();
-    int checkRoom=0;
+    static ArrayList<String> rooms = new ArrayList<>();
+    static int checkRoom = 0;
     TextView Username;
+    String cityName = "Beni Mellal";
     String House = "";
     static RecyclerView DeviceContainer;
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
     static ArrayList<Smart_Devices> smart_devicesArrayLis = new ArrayList<Smart_Devices>();
     static FirebaseDatabase database;
-    AppCompatRadioButton kitchenButton,liviingroomButton,bathroomButton,bedroomButton,checkedButton;
-    static RadioGroup radioGroup ;
+    AppCompatRadioButton kitchenButton, liviingroomButton, bathroomButton, bedroomButton, checkedButton;
+    static RadioGroup radioGroup;
     static AppCompatButton changeshousesbutton;
+
     ArrayList<String> user_info = new ArrayList<>();
     //Map<String,ArrayList<Smart_Devices>> smart_devicesMap = new HashMap<>();
-    Bundle bundle=new Bundle();
+    Bundle bundle = new Bundle();
+    TextView StateWeather, TempDegree, WeatherDescribtion;
+    AppCompatImageView imageWeather;
+    FusedLocationProviderClient fusedLocationClient;
+
+    double MyLong=6.3758;
+    double MyLat= 32.3424;
+    public static Map<String, Integer> images = new HashMap<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,13 +107,56 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
         // Inflate the layout for this fragment
         bundle = this.getArguments();
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        try {
+            if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+            }
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            if (location != null) {
+                                MyLat=location.getLatitude();
+                                MyLong=location.getLongitude();
+                            }
+                        }
+                    });
+        }catch (Exception e){
+
+        }
+
+        Geocoder geocoder = new Geocoder(getContext().getApplicationContext(), Locale.getDefault());
+
+        List<Address> addresses = null;
+        try {
+            addresses = geocoder.getFromLocation(MyLat, MyLong, 1);
+            cityName = addresses.get(0).getAddressLine(0).split(",")[0];
+            Log.i("abderrazak"," "+cityName);
+            weather(cityName);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        String cityName = addresses.get(0).getAddressLine(0);
         user_info = bundle.getStringArrayList("user_info");
         radioGroup = view.findViewById(R.id.radioRoom);
         rooms.add("LivingRoom");
         rooms.add("Kitchen");
         rooms.add("BedRoom");
         rooms.add("BathRoom");
-
+        images.put("Clear",R.drawable.clear);
+        images.put("Clouds",R.drawable.clouds);
+        images.put("Rain",R.drawable.rain);
+        images.put("thunderstroms",R.drawable.thunderstromspng);
+        StateWeather=view.findViewById(R.id.StateWeather);
+        TempDegree=view.findViewById(R.id.TempDegree);
+        WeatherDescribtion=view.findViewById(R.id.WeatherDescribtion);
+        imageWeather=view.findViewById(R.id.imageWeather);
         liviingroomButton = view.findViewById(R.id.button_1);
         kitchenButton = view.findViewById(R.id.button_2);
         bedroomButton = view.findViewById(R.id.button_3);
@@ -86,6 +164,8 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
         changeshousesbutton = view.findViewById(R.id.houses_button_menu);
         Username = view.findViewById(R.id.UsernameTxt);
         Username.setText(user_info.get(1));
+
+
         userImage = view.findViewById(R.id.appCompatImageView);
         DeviceContainer  = view.findViewById(R.id.DeviceContainer);
         layoutManager = new GridLayoutManager(getContext().getApplicationContext(),2);
@@ -226,8 +306,12 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
         database=FirebaseDatabase.getInstance();
         switch (radioGroup.getCheckedRadioButtonId()){
             case R.id.button_1:
-                database.getReference(changeshousesbutton.getText().toString()).child("LivingRoom").child(String.valueOf(smart_device.getPort())).setValue(smart_device);
-                break;
+                try {
+                    database.getReference(changeshousesbutton.getText().toString()).child("LivingRoom").child(String.valueOf(smart_device.getPort())).setValue(smart_device);
+                }catch (Exception e){
+                    break;
+                }
+                    break;
             case R.id.button_2:
                 database.getReference(changeshousesbutton.getText().toString()).child("Kitchen").child(String.valueOf(smart_device.getPort())).setValue(smart_device);
                 break;
@@ -241,37 +325,13 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
     }
     public static void removeFromFirebase(Smart_Devices smart_device) {
         database=FirebaseDatabase.getInstance();
-        switch (radioGroup.getCheckedRadioButtonId()){
-            case R.id.button_1:
-                database.getReference(changeshousesbutton.getText().toString()).child("LivingRoom").child(String.valueOf(smart_device.getPort())).removeValue(new DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                    }
-                });
-                break;
-            case R.id.button_2:
-                database.getReference(changeshousesbutton.getText().toString()).child("Kitchen").child(String.valueOf(smart_device.getPort())).removeValue(new DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                    }
-                });
-                break;
-            case R.id.button_3:
-                database.getReference(changeshousesbutton.getText().toString()).child("BedRoom").child(String.valueOf(smart_device.getPort())).removeValue(new DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                    }
-                });
-                break;
-            case R.id.button_4:
-                database.getReference(changeshousesbutton.getText().toString()).child("BathRoom").child(String.valueOf(smart_device.getPort())).removeValue(new DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                    }
-                });
-                break;
+        database.getReference(changeshousesbutton.getText().toString()).child(rooms.get(checkRoom)).child(String.valueOf(smart_device.getPort())).removeValue(new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+            }
+        });
 
-        }    }
+        }
     void Refrech(int checkRoom){
         database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(changeshousesbutton.getText().toString());
@@ -296,5 +356,46 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
 
             }
         });
+    }
+    public void weather(String CityName){
+        Log.i("abderrazak2",CityName);
+        RequestQueue queue = Volley.newRequestQueue(getContext().getApplicationContext());
+        String url="https://api.openweathermap.org/data/2.5/weather?q="+"Beni Mellal"+"&appid=31d49ebece13e9a409b91f382a1edaca";
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    Log.i("MyLog", "---------");
+                    Log.i("MyLog", response);
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONObject main = jsonObject.getJSONObject("main");
+                    JSONArray weatherArray = jsonObject.getJSONArray("weather");
+                    JSONObject weather = weatherArray.getJSONObject(0);
+                    String tempMin = String.valueOf((int) (main.getDouble("temp_min") - 273.15));
+                    String tempMax = String.valueOf((int) (main.getDouble("temp_max") - 273.15));
+                    String feels_like =String.valueOf((int) (main.getDouble("feels_like") - 273.15));
+                    String stateWeather= (String) (weather.getString("main"));
+                    String weatherDesc= (String) (weather.getString("description"));
+                    int pression = main.getInt("pressure");
+                    int humidity = main.getInt("humidity");
+                    StateWeather.setText(stateWeather);
+                    TempDegree.setText(feels_like+"°C");
+                    WeatherDescribtion.setText("The temperature , below "+tempMin+"°C out cost by "+tempMax+"°C, Humidity "+humidity+", Pressure "+pression);
+                    imageWeather.setImageResource(images.get(stateWeather));
+                    String img = (weather.getString("main"));
+
+//                    meteoItem.image = img;
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i("MyLog","Connection Probelm !");
+            }
+        });
+        queue.add(stringRequest);
     }
 }

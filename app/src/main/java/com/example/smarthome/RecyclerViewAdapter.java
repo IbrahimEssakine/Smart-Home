@@ -51,7 +51,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.textView.setText(smart_devices.get(position).getName());
         holder.Descreption.setText(smart_devices.get(position).getDescription());
-        holder.icon.setImageResource(smart_devices.get(position).getIcon());
+        if(smart_devices.get(position).getState()!=0){
+            holder.icon.setImageResource(smart_devices.get(position).getIconOn());
+        }else{
+        holder.icon.setImageResource(smart_devices.get(position).getIconOff());}
+
         if(smart_devices.get(position).getType()==0){
             holder.State.setVisibility(View.INVISIBLE);
         }else{

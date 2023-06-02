@@ -98,7 +98,7 @@ public class Dialog_Test extends AppCompatDialogFragment {
                     radioButton22.setEnabled(true);
                     item_id = 5;
                 }
-                icon.setImageResource(data_devices.get(position).getIcon());
+                icon.setImageResource(data_devices.get(position).getIconOff());
 
 
             }
@@ -120,7 +120,10 @@ public class Dialog_Test extends AppCompatDialogFragment {
                 }
                 smart_device.setPort(Integer.parseInt(Port.getEditText().getText().toString()));
                 smart_device.setDescription(Description.getEditText().getText().toString());
-                smart_device.setIcon(data_devices.get(item_id).getIcon());
+                smart_device.setIconOff(data_devices.get(item_id).getIconOff());
+                try {
+                    smart_device.setIconOn(data_devices.get(item_id).getIconOn());
+                }catch (Exception e){}
 
                 HomeFragment.addToFirebase(smart_device);
             }

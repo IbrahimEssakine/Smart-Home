@@ -138,7 +138,7 @@ public class LivingRoomFragment extends Fragment implements PopupMenu.OnMenuItem
             viewdevice.setBackgroundColor(Color.parseColor("#4dab4b"));
         }
         //if(smart_device.getIcon()!=0){
-        icon.setImageResource(smart_device.getIcon());
+        icon.setImageResource(smart_device.getIconOff());
         if(smart_device.getType()==0){
             State.setVisibility(View.INVISIBLE);
         }
