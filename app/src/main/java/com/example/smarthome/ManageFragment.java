@@ -26,10 +26,10 @@ import java.util.List;
 public class ManageFragment extends Fragment {
 
     AppCompatButton HousePopupList;
-    AppCompatButton HousePopupList_user;
 
     private List<String> dataList; // List to hold the data for GridView
-    private CustomAdapter adapter; // Adapter for GridView
+    private CustomAdapter_user adapter_user; // Adapter for GridView
+    private CustomAdapter_hex adapter_hex; // Adapter for GridView
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,43 +37,40 @@ public class ManageFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_manage, container, false);
         HousePopupList = view.findViewById(R.id.ShowHouses);
-        HousePopupList_user = view.findViewById(R.id.ShowHouses_user);
         HousePopupList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openDialog();
             }
         });
-        HousePopupList_user.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openDialog();
-            }
-        });
 
+        RecyclerView recyclerView_hex = view.findViewById(R.id.recyclerView_hex);
 
-        GridView gridView = view.findViewById(R.id.gridView_user);
-
-        // Initialize dataList with initial data from the database
+// Initialize dataList with initial data from the database
         dataList = fetchDataFromDatabase();
 
-        // Create the adapter with the dataList
-        adapter = new CustomAdapter(getActivity(), android.R.layout.simple_list_item_1, dataList);
+// Set the layout manager
+        GridLayoutManager layoutManager_hex = new GridLayoutManager(getActivity(), 1);
+        recyclerView_hex.setLayoutManager(layoutManager_hex);
 
-        // Set the adapter to the GridView
-        gridView.setAdapter(adapter);
+// Create the adapter with the dataList
+        adapter_hex = new CustomAdapter_hex(getActivity(), R.layout.grid_item_layout_hex, dataList);
+        recyclerView_hex.setAdapter(adapter_hex);
 
+//********************************************************************
 
-//
-//        RecyclerView recyclerView = view.findViewById(R.id.recyclerView_user);
-//
-//// Set the layout manager
-//        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
-//        recyclerView.setLayoutManager(layoutManager);
-//
-//// Create the adapter with the dataList
-//        adapter = new CustomAdapter(getActivity(), R.layout.grid_item_layout_user, dataList);
-//        recyclerView.setAdapter(adapter);
+        RecyclerView recyclerView_user = view.findViewById(R.id.recyclerView_user);
+
+//        // Initialize dataList with initial data from the database
+        dataList = fetchDataFromDatabase();
+
+// Set the layout manager
+        GridLayoutManager layoutManager_user = new GridLayoutManager(getActivity(), 1);
+        recyclerView_user.setLayoutManager(layoutManager_user);
+
+// Create the adapter with the dataList
+        adapter_user = new CustomAdapter_user(getActivity(), R.layout.grid_item_layout_user, dataList);
+        recyclerView_user.setAdapter(adapter_user);
 
 
         return view;
@@ -97,14 +94,13 @@ public class ManageFragment extends Fragment {
     }
 
 
+private class CustomAdapter_hex extends RecyclerView.Adapter<CustomAdapter_hex.ViewHolder> {
+        // Your existing code...
 
-
-    private class CustomAdapter extends ArrayAdapter<String> {
         private int resourceId;
         private int selectedItem = -1;
 
-        public CustomAdapter(Context context, int resourceId, List<String> dataList) {
-            super(context, resourceId, dataList);
+        public CustomAdapter_hex(Context context, int resourceId, List<String> dataList) {
             this.resourceId = resourceId;
         }
 
@@ -112,103 +108,108 @@ public class ManageFragment extends Fragment {
             selectedItem = position;
             notifyDataSetChanged();
         }
+
         @NonNull
         @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.grid_item_layout_user, parent, false);
-            }
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(resourceId, parent, false);
+            return new ViewHolder(view);
+        }
 
-            LinearLayout itemLayout = convertView.findViewById(R.id.itemLayout);
-            TextView itemTextView = convertView.findViewById(R.id.itemTextView);
-            ImageView imageView = convertView.findViewById(R.id.textdivider);
-
-            String dataItem = getItem(position);
-            itemTextView.setText(dataItem);
-            itemLayout.setClickable(true);
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            String dataItem = dataList.get(position);
+            holder.itemTextView.setText(dataItem);
 
             if (position == selectedItem) {
-                itemLayout.setBackgroundColor(Color.parseColor("#a4b6ce"));
+                holder.itemLayout.setBackgroundColor(Color.parseColor("#a4b6ce"));
             } else {
-                itemLayout.setBackgroundColor(Color.WHITE);
+                holder.itemLayout.setBackgroundColor(Color.WHITE);
+            }
+        }
+
+        @Override
+        public int getItemCount() {
+            return dataList.size();
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+            LinearLayout itemLayout;
+            TextView itemTextView;
+
+            public ViewHolder(@NonNull View itemView) {
+                super(itemView);
+                itemLayout = itemView.findViewById(R.id.itemLayout);
+                itemTextView = itemView.findViewById(R.id.itemTextView);
+
+                itemLayout.setOnClickListener(this);
             }
 
-            itemLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    setSelectedItem(position);
-                }
-            });
-
-            return convertView;
+            @Override
+            public void onClick(View v) {
+                setSelectedItem(getAdapterPosition());
+            }
         }
-        @Override
-        public boolean isEnabled(int position) {
-            // Enable selection on grid items
-            return true;
-        }
-
     }
 
-//
-//private class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
-//    // Your existing code...
-//
-//    private int resourceId;
-//        private int selectedItem = -1;
-//
-//        public CustomAdapter(Context context, int resourceId, List<String> dataList) {
-//            super(context, resourceId, dataList);
-//            this.resourceId = resourceId;
-//        }
-//
-//        public void setSelectedItem(int position) {
-//            selectedItem = position;
-//            notifyDataSetChanged();
-//        }
-//
-//    @NonNull
-//    @Override
-//    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(parent.getContext()).inflate(resourceId, parent, false);
-//        return new ViewHolder(view);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//        String dataItem = getItem(position);
-//        holder.itemTextView.setText(dataItem);
-//
-//        if (position == selectedItem) {
-//            holder.itemLayout.setBackgroundColor(Color.parseColor("#a4b6ce"));
-//        } else {
-//            holder.itemLayout.setBackgroundColor(Color.WHITE);
-//        }
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return dataList.size();
-//    }
-//
-//    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-//        LinearLayout itemLayout;
-//        TextView itemTextView;
-//
-//        public ViewHolder(@NonNull View itemView) {
-//            super(itemView);
-//            itemLayout = itemView.findViewById(R.id.itemLayout);
-//            itemTextView = itemView.findViewById(R.id.itemTextView);
-//
-//            itemLayout.setOnClickListener(this);
-//        }
-//
-//        @Override
-//        public void onClick(View v) {
-//            setSelectedItem(getAdapterPosition());
-//        }
-//    }
-//}
+
+private class CustomAdapter_user extends RecyclerView.Adapter<CustomAdapter_user.ViewHolder> {
+    // Your existing code...
+
+    private int resourceId;
+    private int selectedItem = -1;
+
+    public CustomAdapter_user(Context context, int resourceId, List<String> dataList) {
+        this.resourceId = resourceId;
+    }
+
+    public void setSelectedItem(int position) {
+        selectedItem = position;
+        notifyDataSetChanged();
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(resourceId, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        String dataItem = dataList.get(position);
+        holder.itemTextView.setText(dataItem);
+
+        if (position == selectedItem) {
+            holder.itemLayout.setBackgroundColor(Color.parseColor("#a4b6ce"));
+        } else {
+            holder.itemLayout.setBackgroundColor(Color.WHITE);
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return dataList.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        LinearLayout itemLayout;
+        TextView itemTextView;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            itemLayout = itemView.findViewById(R.id.itemLayout);
+            itemTextView = itemView.findViewById(R.id.itemTextView);
+
+            itemLayout.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            setSelectedItem(getAdapterPosition());
+        }
+    }
+}
 
 
 

@@ -3,6 +3,8 @@ package com.example.smarthome;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -68,6 +70,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifImageView;
 
 public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickListener {
     ArrayList<String> dataOfuser = new ArrayList<String>();
@@ -208,6 +213,31 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
                         }
                     }
                 });
+
+
+
+        // ************************ Door Test ***************
+
+        GifImageView Door = view.findViewById(R.id.Door);
+        ((GifDrawable)Door.getDrawable()).stop();
+        Door.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view.isSelected()) {
+                    view.setSelected(false);
+                    Door.setBackgroundResource(R.drawable.door_background_closed);
+                    ((GifDrawable)Door.getDrawable()).start();
+                    Door.setImageResource(R.drawable.close_door_v1);
+                } else {
+                    view.setSelected(true);
+                    Door.setBackgroundResource(R.drawable.door_background_opend);
+                    ((GifDrawable)Door.getDrawable()).start();
+                    Door.setImageResource(R.drawable.open_door_v1);
+                }
+            }
+        });
+
+        // **************************************************
 
 //        database = FirebaseDatabase.getInstance();
 //        DatabaseReference myRef = database.getReference("Mx2Knn4Kb9lpnCTvErBV");

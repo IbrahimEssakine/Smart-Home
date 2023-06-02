@@ -129,6 +129,92 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/manageconfig_background"
+                android:maxWidth="440dp"
+                android:padding="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/configtxt">
+
+                <TextView
+                    android:id="@+id/paneltxt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/outfit_light"
+                    android:letterSpacing="0"
+                    android:text="Choose or Create House :"
+                    android:textColor="@color/blue_main"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/ShowHouses"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/continuewith_background"
+                    android:backgroundTint="#fff"
+                    android:clickable="true"
+                    android:drawableLeft="@drawable/baseline_home_work_24"
+                    android:drawableRight="@drawable/baseline_search_24"
+                    android:drawableTint="@color/blue_main"
+                    android:fontFamily="@font/outfit_light"
+                    android:letterSpacing="0"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="Your Workspaces"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blue_main_shade"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/paneltxt1" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="2dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/line_gray"
+                    app:layout_constraintBottom_toBottomOf="@+id/ShowHouses"
+                    app:layout_constraintEnd_toStartOf="@+id/CreateHouse"
+                    app:layout_constraintTop_toTopOf="@+id/ShowHouses" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/CreateHouse"
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:background="@drawable/continuewith_background"
+                    android:backgroundTint="#fff"
+                    android:clickable="true"
+                    android:drawableLeft="@drawable/baseline_add_circle_outline_24"
+                    android:drawableTint="@color/blue_main"
+                    android:fontFamily="@font/outfit_light"
+                    android:letterSpacing="0"
+                    android:paddingLeft="13dp"
+                    android:text=""
+                    android:textAllCaps="false"
+                    android:textColor="@color/blue_main_shade"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/ShowHouses" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_1"
                     android:layout_width="0dp"
@@ -141,85 +227,21 @@
                     android:padding="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/configtxt">
+                    app:layout_constraintTop_toBottomOf="@+id/container_0">
 
-                    <TextView
-                        android:id="@+id/paneltxt1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/outfit_light"
-                        android:letterSpacing="0"
-                        android:text="Choose or Create House :"
-                        android:textColor="@color/blue_main"
-                        android:textSize="18dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/ShowHouses"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:layout_marginEnd="12dp"
-                        android:background="@drawable/continuewith_background"
-                        android:backgroundTint="#fff"
-                        android:clickable="true"
-                        android:drawableLeft="@drawable/baseline_home_work_24"
-                        android:drawableRight="@drawable/baseline_search_24"
-                        android:drawableTint="@color/blue_main"
-                        android:fontFamily="@font/outfit_light"
-                        android:letterSpacing="0"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:text="Your Workspaces"
-                        android:textAllCaps="false"
-                        android:textColor="@color/blue_main_shade"
-                        android:textSize="15dp"
-                        app:layout_constraintEnd_toStartOf="@+id/imageView2"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/paneltxt1" />
-
-                    <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="2dp"
-                        android:layout_height="40dp"
-                        android:layout_marginEnd="12dp"
-                        android:src="@drawable/line_gray"
-                        app:layout_constraintBottom_toBottomOf="@+id/ShowHouses"
-                        app:layout_constraintEnd_toStartOf="@+id/CreateHouse"
-                        app:layout_constraintTop_toTopOf="@+id/ShowHouses" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/CreateHouse"
-                        android:layout_width="48dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/continuewith_background"
-                        android:backgroundTint="#fff"
-                        android:clickable="true"
-                        android:drawableLeft="@drawable/baseline_add_circle_outline_24"
-                        android:drawableTint="@color/blue_main"
-                        android:fontFamily="@font/outfit_light"
-                        android:letterSpacing="0"
-                        android:paddingLeft="13dp"
-                        android:text=""
-                        android:textAllCaps="false"
-                        android:textColor="@color/blue_main_shade"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/ShowHouses" />
 
                     <TextView
                         android:id="@+id/paneltxt2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
+                        android:layout_marginTop="12dp"
                         android:fontFamily="@font/outfit_light"
                         android:letterSpacing="0"
-                        android:text="Edit :"
+                        android:text="Edit Choosen House :"
                         android:textColor="@color/blue_main"
                         android:textSize="18dp"
-                        app:layout_constraintStart_toStartOf="@+id/paneltxt1"
-                        app:layout_constraintTop_toBottomOf="@+id/ShowHouses" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -249,31 +271,125 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/CardHexNbr"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:fontFamily="@font/outfit_light"
-                        android:hint="ID Card Code"
-                        android:textColorHint="#7B8DA3"
-
-                        app:boxStrokeColor="#1C4984"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/manageconfig_background"
+                        android:backgroundTint="#e5e5e5"
+                        android:maxHeight="350dp"
+                        android:minHeight="200dp"
+                        android:padding="12dp"
+                        app:layout_constraintBottom_toTopOf="@+id/imageView3"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/HouseTxt"
-                        app:startIconDrawable="@drawable/baseline_nfc_24"
-                        app:startIconTint="@color/blue_main">
+                        app:layout_constraintTop_toBottomOf="@+id/HouseTxt">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/paneltxt5"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/continuewith_background"
-                            android:backgroundTint="@color/white"
-                            android:inputType="text"
-                            android:textColor="#1C4984" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/outfit_light"
+                            android:letterSpacing="0"
+                            android:text="Edit RFID :"
+                            android:textColor="@color/blue_main"
+                            android:textSize="18dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerView_hex"
+                            layout_constraintStart_toStartOf="parent"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:nestedScrollingEnabled="true"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                            app:layout_constraintBottom_toTopOf="@+id/NewHex"
+                            app:layout_constraintEnd_toStartOf="@+id/Hexdelete"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/paneltxt5"
+                            app:reverseLayout="false"
+                            app:spanCount="1"
+                            app:stackFromEnd="false"></androidx.recyclerview.widget.RecyclerView>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/Hexdelete"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/button_next"
+                            android:backgroundTint="#C34A4A"
+                            android:drawableLeft="@drawable/baseline_delete_24"
+                            android:drawableTint="#fff"
+                            android:fontFamily="@font/outfit_medium"
+                            android:letterSpacing="0"
+                            android:minWidth="56dp"
+                            android:paddingLeft="15dp"
+                            android:text=""
+                            android:textAllCaps="false"
+                            android:textColor="#fff"
+                            android:textSize="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/recyclerView_hex" />
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/NewHex"
+
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Add New Hex Code"
+                            android:minWidth="140dp"
+                            android:textColorHint="#7B8DA3"
+                            app:boxStrokeColor="#1C4984"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:startIconDrawable="@drawable/baseline_nfc_24"
+                            app:startIconTint="@color/blue_main">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/continuewith_background"
+                                android:backgroundTint="@color/white"
+                                android:inputType="textEmailAddress"
+                                android:textColor="#1C4984" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/AddNewHex"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/button_next"
+                            android:backgroundTint="@color/blue_main"
+                            android:drawableLeft="@drawable/baseline_add_circle_outline_24"
+                            android:drawableTint="#fff"
+                            android:fontFamily="@font/outfit_medium"
+                            android:letterSpacing="0"
+                            android:paddingLeft="15dp"
+                            android:text=""
+                            android:textAllCaps="false"
+                            android:textColor="#fff"
+                            android:textSize="16dp"
+                            app:layout_constraintBottom_toTopOf="@+id/NewHex"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/Hexdelete"
+                            app:layout_constraintTop_toBottomOf="@+id/Hexdelete" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/KeypadPassword"
@@ -316,7 +432,7 @@
                         android:fontFamily="@font/outfit_medium"
                         android:letterSpacing="0"
                         android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
+                        android:paddingRight="38dp"
                         android:text="Save"
                         android:textAllCaps="false"
                         android:textColor="#fff"
@@ -331,20 +447,20 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:background="@drawable/button_next"
-                        android:backgroundTint="@color/gray_null"
-                        android:drawableLeft="@drawable/baseline_cancel_24"
+                        android:backgroundTint="#C34A4A"
+                        android:drawableLeft="@drawable/baseline_delete_24"
                         android:drawableTint="#fff"
                         android:fontFamily="@font/outfit_medium"
                         android:letterSpacing="0"
                         android:minWidth="130dp"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:text="Cancel"
+                        android:text="Delete"
                         android:textAllCaps="false"
                         android:textColor="#fff"
                         android:textSize="16dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/CardHexNbr" />
+                        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
                     <ImageView
                         android:id="@+id/imageView3"
@@ -354,28 +470,7 @@
                         android:src="@drawable/line_gray"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/CancelCreateHouse" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/Housedelete"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:background="@drawable/button_next"
-                        android:backgroundTint="#C34A4A"
-                        android:drawableLeft="@drawable/baseline_delete_24"
-                        android:drawableTint="#fff"
-                        android:fontFamily="@font/outfit_medium"
-                        android:letterSpacing="0"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:text="Delete"
-                        android:textAllCaps="false"
-                        android:textColor="#fff"
-                        android:textSize="16dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+                        app:layout_constraintTop_toBottomOf="@+id/CardHexNbr" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -386,7 +481,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="22dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="28dp"
                     android:fontFamily="@font/outfit_medium"
                     android:letterSpacing="0"
                     android:text="Users Configuration"
@@ -402,10 +497,10 @@
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="24dp"
                     android:layout_marginEnd="12dp"
-                    android:layout_marginBottom="72dp"
+                    android:layout_marginBottom="128dp"
                     android:background="@drawable/manageconfig_background"
-                    android:maxHeight="750dp"
-                    android:minHeight="600dp"
+                    android:maxHeight="550dp"
+                    android:minHeight="400dp"
                     android:padding="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -414,175 +509,120 @@
                     app:layout_constraintTop_toBottomOf="@+id/userconfigtxt"
                     app:layout_constraintVertical_bias="0.0">
 
-                    <TextView
-                        android:id="@+id/paneltxt11"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/outfit_light"
-                        android:letterSpacing="0"
-                        android:text="Choose House :"
-                        android:textColor="@color/blue_main"
-                        android:textSize="18dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/ShowHouses_user"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:background="@drawable/continuewith_background"
-                        android:backgroundTint="#fff"
-                        android:clickable="true"
-                        android:drawableLeft="@drawable/baseline_home_work_24"
-                        android:drawableRight="@drawable/baseline_search_24"
-                        android:drawableTint="@color/blue_main"
-                        android:fontFamily="@font/outfit_light"
-                        android:letterSpacing="0"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:text="Your Workspaces"
-                        android:textAllCaps="false"
-                        android:textColor="@color/blue_main_shade"
-                        android:textSize="15dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/paneltxt11" />
 
                     <TextView
                         android:id="@+id/paneltxt12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
+                        android:layout_marginTop="12dp"
                         android:fontFamily="@font/outfit_light"
                         android:letterSpacing="0"
-                        android:text="House Users :"
+                        android:text="Choosen House Users :"
                         android:textColor="@color/blue_main"
                         android:textSize="18dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ShowHouses_user" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <GridView
-                        android:id="@+id/gridView_user"
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView_user"
+                        layout_constraintStart_toStartOf="parent"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_marginTop="14dp"
                         android:layout_marginBottom="12dp"
-                        android:layout_weight="1"
-                        android:background="#e3e3e3"
-                        android:clickable="true"
-                        android:divider="@drawable/divider"
-                        android:dividerHeight="1dp"
-                        android:horizontalSpacing="1dp"
-                        android:numColumns="1"
+                        android:nestedScrollingEnabled="true"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                         app:layout_constraintBottom_toTopOf="@+id/Userdelete"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/paneltxt12"
+                        app:reverseLayout="false"
+                        app:spanCount="1"
+                        app:stackFromEnd="false"></androidx.recyclerview.widget.RecyclerView>
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/Userdelete"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="14dp"
+                        android:background="@drawable/button_next"
+                        android:backgroundTint="#C34A4A"
+                        android:drawableLeft="@drawable/baseline_delete_24"
+                        android:drawableTint="#fff"
+                        android:fontFamily="@font/outfit_medium"
+                        android:letterSpacing="0"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="38dp"
+                        android:text="Delete Selected User"
+                        android:textAllCaps="false"
+                        android:textColor="#fff"
+                        android:textSize="16dp"
+                        app:layout_constraintBottom_toTopOf="@+id/paneltxt13"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/paneltxt13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="14dp"
+                        android:fontFamily="@font/outfit_light"
+                        android:letterSpacing="0"
+                        android:text="Add New User :"
+                        android:textColor="@color/blue_main"
+                        android:textSize="18dp"
+                        app:layout_constraintBottom_toTopOf="@+id/NewUserEmail"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/NewUserEmail"
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:ems="10"
+                        android:hint="User Email"
+                        android:minWidth="140dp"
+                        android:textColorHint="#7B8DA3"
+                        app:boxStrokeColor="#1C4984"
+                        app:layout_constraintBottom_toTopOf="@+id/AddNewUser"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/paneltxt12" />
+                        app:startIconDrawable="@drawable/baseline_email_24"
+                        app:startIconTint="@color/blue_main">
 
-
-
-
-<!--                       <androidx.recyclerview.widget.RecyclerView-->
-<!--                            android:id="@+id/recyclerView_user"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
-<!--                            app:spanCount="1"-->
-
-<!--                            app:reverseLayout="false"-->
-<!--                            app:stackFromEnd="false"-->
-<!--                            app:layout_constraintBottom_toTopOf="@+id/Userdelete"-->
-<!--                            app:layout_constraintEnd_toEndOf="parent"-->
-<!--                            layout_constraintStart_toStartOf="parent"-->
-<!--                            app:layout_constraintTop_toBottomOf="@+id/paneltxt12"-->
-<!--                            ></androidx.recyclerview.widget.RecyclerView>-->
-
-
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/Userdelete"
-                            android:layout_width="0dp"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="14dp"
-                            android:background="@drawable/button_next"
-                            android:backgroundTint="#C34A4A"
-                            android:drawableLeft="@drawable/baseline_delete_24"
-                            android:drawableTint="#fff"
-                            android:fontFamily="@font/outfit_medium"
-                            android:letterSpacing="0"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:text="Delete User"
-                            android:textAllCaps="false"
-                            android:textColor="#fff"
-                            android:textSize="16dp"
-                            app:layout_constraintBottom_toTopOf="@+id/paneltxt13"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            android:background="@drawable/continuewith_background"
+                            android:backgroundTint="@color/white"
+                            android:inputType="textEmailAddress"
+                            android:textColor="#1C4984" />
 
-                        <TextView
-                            android:id="@+id/paneltxt13"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="14dp"
-                            android:fontFamily="@font/outfit_light"
-                            android:letterSpacing="0"
-                            android:text="Add New User :"
-                            android:textColor="@color/blue_main"
-                            android:textSize="18dp"
-                            app:layout_constraintBottom_toTopOf="@+id/NewUserEmail"
-                            app:layout_constraintStart_toStartOf="parent" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/NewUserEmail"
-
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="12dp"
-                            android:ems="10"
-                            android:hint="User Email"
-                            android:minWidth="140dp"
-                            android:textColorHint="#7B8DA3"
-                            app:boxStrokeColor="#1C4984"
-                            app:layout_constraintBottom_toTopOf="@+id/AddNewUser"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:startIconDrawable="@drawable/baseline_email_24"
-                            app:startIconTint="@color/blue_main">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/continuewith_background"
-                                android:backgroundTint="@color/white"
-                                android:inputType="textEmailAddress"
-                                android:textColor="#1C4984" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/AddNewUser"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/button_next"
-                            android:backgroundTint="@color/blue_main"
-                            android:drawableLeft="@drawable/baseline_person_add_alt_1_24"
-                            android:drawableTint="#fff"
-                            android:fontFamily="@font/outfit_medium"
-                            android:letterSpacing="0"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:text="Add User"
-                            android:textAllCaps="false"
-                            android:textColor="#fff"
-                            android:textSize="16dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/AddNewUser"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="14dp"
+                        android:background="@drawable/button_next"
+                        android:backgroundTint="@color/blue_main"
+                        android:drawableLeft="@drawable/baseline_person_add_alt_1_24"
+                        android:drawableTint="#fff"
+                        android:fontFamily="@font/outfit_medium"
+                        android:letterSpacing="0"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="38dp"
+                        android:text="Add User"
+                        android:textAllCaps="false"
+                        android:textColor="#fff"
+                        android:textSize="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
