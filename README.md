@@ -1,5 +1,8 @@
 # Smart-Home
-
+<p align="center" width="100%">
+  <img width="612" src="https://github.com/IbrahimEssakine/Smart-Home/assets/130489466/032e6c62-9441-444a-ac28-162f39133395"/>
+</p>
+    
 The integration of IOT using ESP32 (C++) and android application (Java) to make a smart house.
 
 This Github project is focused on creating an integration between a mobile application and IoT to develop a Smart House system. The project aims to provide a user-friendly interface that enables users to control their house appliances remotely via their mobile devices.
@@ -15,10 +18,10 @@ The project will include a detailed step-by-step guide on how to set up the hard
 ![schema of danger and usabiliy](https://github.com/IbrahimEssakine/Smart-Home/assets/130489466/3526d5c8-f9de-4f35-a2a0-da927efc20c0)
 
 # Some UML Diagrams  :
-## use case diagram :
+## Use Case Diagram :
 ![use case diagram](https://github.com/IbrahimEssakine/Smart-Home/assets/130489466/308e2144-c7c4-4b14-9117-e9160a7c2337)
 
-## deployment diagram:
+## Deployment Diagram:
 ![deployment diagram](https://github.com/IbrahimEssakine/Smart-Home/assets/130489466/ec1133c3-f749-4edb-ba95-97752694f37f)
 
 # Mobile App Step-by-Step Overview
@@ -28,6 +31,34 @@ The project will include a detailed step-by-step guide on how to set up the hard
 <img width="612" alt="4" src="https://github.com/IbrahimEssakine/Smart-Home/assets/130489466/cf11e221-5c2a-4ae4-bb63-1ac4fdad0874">
 <img width="612" alt="3" src="https://github.com/IbrahimEssakine/Smart-Home/assets/130489466/3d075004-3962-4514-8324-389a7d55984e">
 <img width="612" alt="6" src="https://github.com/IbrahimEssakine/Smart-Home/assets/130489466/84ae641f-c49e-44a1-a577-c433128d2253">
+
 # Simple flowchart of the process of Utilizing the “SmartHouse” application :
+
+<img width="832" alt="flowchart" src="https://github.com/IbrahimEssakine/Smart-Home/assets/130489466/53a87590-0ad7-4b22-b6bb-7b71cea93c0d">
+
+
+## Used Components :
+
+| Component                        |
+|----------------------------------|
+| ESP 32                            |
+| Arduino                          |
+| RFID                             |
+| LCD with I²C Module              |
+| Servo Motor                      |
+| Stepper Motor                    |
+| Relay 5V                          |
+| Motion Sensor (PIR)              |
+| MQ-135 Gas Sensor                |
+| Mini Water Pump                  |
+| DC Motor (5V)                    |
+| Photoresistor                     |
+| DHT22                            |
+| Strip Light (12V RGB)            |
+| Power Supply Module               |
+| AC/DC Adapter                    |
+
+
+
 
 
