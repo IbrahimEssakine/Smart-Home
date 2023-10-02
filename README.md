@@ -16,7 +16,9 @@ On the other hand, the hardware implementation will be carried out using the ESP
 The project will include a detailed step-by-step guide on how to set up the hardware and software components of the project. This will include the schematic diagrams, bill of materials, and code snippets ...
 
 ## Schema Of Danger And Usabiliy :
-![schema of danger and usabiliy](https://github.com/IbrahimEssakine/Smart-Home/assets/130489466/3526d5c8-f9de-4f35-a2a0-da927efc20c0)
+<p align="center" width="100%">
+  <img src="https://github.com/IbrahimEssakine/Smart-Home/assets/130489466/3526d5c8-f9de-4f35-a2a0-da927efc20c0"/>
+</p>
 
 # Some UML Diagrams  :
 ## Use Case Diagram :
@@ -35,8 +37,8 @@ The project will include a detailed step-by-step guide on how to set up the hard
 
 # Simple Flowchart Of The process Of Utilizing The “SmartHouse” application :
 
-![Uploading flowchart.png…]()
 
+![flowchart](https://github.com/IbrahimEssakine/Smart-Home/assets/130489466/8d3485a3-fb10-44e8-9b96-547987f68243)
 
 # Used Components :
 
