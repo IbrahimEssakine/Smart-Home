@@ -14,6 +14,7 @@ The project will consist of two main parts: the mobile application and the hardw
 On the other hand, the hardware implementation will be carried out using the ESP32 MCU. The MCU will be responsible for controlling various devices in the house such as lights, fans, air conditioners, and so on. The MCU will be programmed using the Arduino IDE and the code will be written in C++.
 
 The project will include a detailed step-by-step guide on how to set up the hardware and software components of the project. This will include the schematic diagrams, bill of materials, and code snippets ...
+
 ## Schema Of Danger And Usabiliy :
 ![schema of danger and usabiliy](https://github.com/IbrahimEssakine/Smart-Home/assets/130489466/3526d5c8-f9de-4f35-a2a0-da927efc20c0)
 
@@ -32,12 +33,12 @@ The project will include a detailed step-by-step guide on how to set up the hard
 <img width="612" alt="3" src="https://github.com/IbrahimEssakine/Smart-Home/assets/130489466/3d075004-3962-4514-8324-389a7d55984e">
 <img width="612" alt="6" src="https://github.com/IbrahimEssakine/Smart-Home/assets/130489466/84ae641f-c49e-44a1-a577-c433128d2253">
 
-# Simple flowchart of the process of Utilizing the “SmartHouse” application :
+# Simple Flowchart Of The process Of Utilizing The “SmartHouse” application :
 
-<img width="832" alt="flowchart" src="https://github.com/IbrahimEssakine/Smart-Home/assets/130489466/53a87590-0ad7-4b22-b6bb-7b71cea93c0d">
+![Uploading flowchart.png…]()
 
 
-## Used Components :
+# Used Components :
 
 | Component                        |
 |----------------------------------|
